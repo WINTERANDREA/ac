@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 type Props = { onCtaClick?: () => void };
 
@@ -20,7 +21,6 @@ export default function BioIntro({ onCtaClick }: Props) {
       el.style.transform = "translateY(0)";
     } else {
       el.style.maxHeight = h + "px";
-      // @ts-expect-error: force reflow
       void el.offsetHeight;
       el.style.maxHeight = "0px";
       el.style.opacity = "0";
@@ -173,7 +173,7 @@ export default function BioIntro({ onCtaClick }: Props) {
 
       {/* Colonna foto */}
       <div className='bioPhoto' aria-hidden='true'>
-        <img
+        <Image
           src={avatar}
           alt='Foto di Andrea Casero'
           width={720}

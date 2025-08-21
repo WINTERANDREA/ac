@@ -1,8 +1,16 @@
+// app/api/lead/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import nodemailer from "nodemailer";
+import nodemailer, { Transporter } from "nodemailer";
 
 export const runtime = "nodejs";
+
+/* ---------- Tipi ---------- */
+type EmailResult =
+  | { ok: true; messageId: string; accepted: string[]; rejected: string[] }
+  | { ok: false; reason: string };
+
+type WAResult = { ok: true; id?: string } | { ok: false; reason: string };
 
 /* ---------- ENV ---------- */
 const {
@@ -15,18 +23,20 @@ const {
   SMTP_PASS,
   SMTP_FROM_NAME = "Andrea Casero",
   CONTACT_EMAIL = "andrecasero@gmail.com",
+  // WhatsApp disattivato: lascio variabili ma non obbligatorie
   WHATSAPP_TOKEN,
   WHATSAPP_PHONE_ID,
   WHATSAPP_TO,
-} = process.env as Record<string, string>;
+} = process.env;
 
+/* ---------- Supabase ---------- */
 const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
 /* ---------- Email (Nodemailer) ---------- */
-function getTransport() {
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
+function getTransport(): Transporter | null {
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
     console.warn("[SMTP] Config mancante: skip email");
     return null;
   }
@@ -39,10 +49,9 @@ function getTransport() {
 }
 
 /* ---------- WhatsApp (Cloud API) opzionale ---------- */
-async function sendWhatsApp(text: string) {
+async function sendWhatsApp(text: string): Promise<WAResult> {
   if (!WHATSAPP_TOKEN || !WHATSAPP_PHONE_ID || !WHATSAPP_TO) {
-    console.warn("[WA] Config mancante: skip WhatsApp");
-    return { ok: false, reason: "WA_CONFIG_MISSING" };
+    return { ok: false, reason: "WA_DISABLED" };
   }
   const url = `https://graph.facebook.com/v20.0/${WHATSAPP_PHONE_ID}/messages`;
   const res = await fetch(url, {
@@ -50,20 +59,40 @@ async function sendWhatsApp(text: string) {
     headers: {
       Authorization: `Bearer ${WHATSAPP_TOKEN}`,
       "Content-Type": "application/json",
-    },
+    } as HeadersInit,
     body: JSON.stringify({
       messaging_product: "whatsapp",
       to: WHATSAPP_TO,
       type: "text",
-      text: { body: text.slice(0, 1024) }, // limite prudenziale
+      text: { body: text.slice(0, 1024) },
     }),
   });
-  const json = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    console.error("[WA] Errore invio:", json || res.statusText);
-    return { ok: false, reason: json || res.statusText };
+
+  // prova a leggere JSON, altrimenti fallback a testo
+  let payload: unknown;
+  try {
+    payload = await res.json();
+  } catch {
+    payload = await res.text();
   }
-  return { ok: true, id: json?.messages?.[0]?.id };
+
+  if (!res.ok) {
+    console.error("[WA] Errore invio:", payload);
+    return {
+      ok: false,
+      reason: typeof payload === "string" ? payload : "WA_SEND_FAILED",
+    };
+  }
+
+  const id =
+    typeof payload === "object" &&
+    payload !== null &&
+    // @ts-ignore (shape minimale, non importiamo SDK)
+    Array.isArray((payload as any).messages) &&
+    // @ts-ignore
+    (payload as any).messages[0]?.id;
+
+  return { ok: true, id };
 }
 
 /* ---------- Utils ---------- */
@@ -78,7 +107,7 @@ function getClientIp(req: NextRequest): string {
     "unknown"
   );
 }
-function escapeHTML(s: string) {
+function escapeHTML(s: string): string {
   return String(s)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -183,44 +212,51 @@ export async function POST(req: NextRequest) {
     )}</p>
       </div>`;
 
-    let emailResult: any = { ok: false, reason: "SMTP_DISABLED" };
+    let emailResult: EmailResult = { ok: false, reason: "SMTP_DISABLED" };
     const transporter = getTransport();
     if (transporter) {
       try {
         const info = await transporter.sendMail({
           from: `${SMTP_FROM_NAME} <${SMTP_USER}>`,
-          to: CONTACT_EMAIL,
+          to: CONTACT_EMAIL!,
           subject: `Nuova richiesta quota ${share}% — 2026`,
           html,
+          text: `Lead ${share}% 2026\nNome: ${name}\nEmail: ${email}\nOre: ${clientHours}\nCosto: € ${Number(
+            clientCost
+          ).toLocaleString("it-IT")}\n\nMessaggio:\n${message}`,
           replyTo: email || undefined,
+          headers: {
+            "X-Lead-Share": String(share),
+            "X-Lead-ClientHours": String(clientHours),
+          },
         });
         emailResult = {
           ok: true,
           messageId: info.messageId,
-          accepted: info.accepted,
-          rejected: info.rejected,
+          accepted: Array.isArray(info.accepted)
+            ? info.accepted.map(String)
+            : [],
+          rejected: Array.isArray(info.rejected)
+            ? info.rejected.map(String)
+            : [],
         };
       } catch (err) {
-        console.error("[SMTP] sendMail error:", err);
-        emailResult = { ok: false, reason: String(err) };
+        const reason = err instanceof Error ? err.message : String(err);
+        console.error("[SMTP] sendMail error:", reason);
+        emailResult = { ok: false, reason };
       }
     }
 
-    // ---- WhatsApp (opzionale) ----
-    let waResult: any = { ok: false, reason: "WA_DISABLED" };
-    // Se vuoi inviare sempre, togli la condizione; qui inviamo solo se l'email è ok o se vuoi fallback
-    if (WHATSAPP_TOKEN && WHATSAPP_PHONE_ID && WHATSAPP_TO) {
-      const text =
-        `Lead ${share}% — 2026\n` +
-        `Nome: ${name || "-"}\nEmail: ${email || "-"}\nAzienda: ${
-          company || "-"
-        }\n` +
+    // ---- WhatsApp (rimane disattivato se non configurato) ----
+    const waResult: WAResult = await sendWhatsApp(
+      `Lead ${share}% — 2026\nNome: ${name || "-"}\nEmail: ${
+        email || "-"
+      }\nAzienda: ${company || "-"}\n` +
         `Ore: ${clientHours} · Costo: € ${Number(clientCost).toLocaleString(
           "it-IT"
         )}\n` +
-        `Msg: ${message?.slice(0, 300) || "-"}`;
-      waResult = await sendWhatsApp(text);
-    }
+        `Msg: ${message?.slice(0, 300) || "-"}`
+    );
 
     return NextResponse.json(
       { ok: true, email: emailResult, whatsapp: waResult },
