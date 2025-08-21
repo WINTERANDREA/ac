@@ -1,5 +1,6 @@
 "use client";
 
+import BioIntro from "@/components/BioIntro";
 import { useMemo, useState } from "react";
 
 const cur = new Intl.NumberFormat("it-IT", {
@@ -18,7 +19,7 @@ const ENV = {
   target: envNum(process.env.NEXT_PUBLIC_TARGET, 80000),
   weeks: envNum(process.env.NEXT_PUBLIC_WEEKS, 46),
   daysPerWeek: envNum(process.env.NEXT_PUBLIC_DAYS_PER_WEEK, 5),
-  hoursPerDay: envNum(process.env.NEXT_PUBLIC_HOURS_PER_DAY, 6),
+  hoursPerDay: envNum(process.env.NEXT_PUBLIC_HOURS_PER_DAY, 8),
 };
 
 const CASE_STUDIES = [
@@ -61,6 +62,7 @@ const CASE_STUDIES = [
     bullets: [
       "Definizione proposta valore e format esperienze",
       "Landing con call-to-action e gestione richieste",
+      "Materiali promo per campagne",
     ],
     tags: ["Branding", "Next.js", "TravelOps", "Food"],
   },
@@ -86,6 +88,107 @@ const CASE_STUDIES = [
     ],
     tags: ["Python/Node", "n8n", "Data", "Automation"],
   },
+
+  /* --- AI & mobile --- */
+  {
+    title: "Sommelier AI — App vino con tasting note",
+    subtitle:
+      "React Native + Expo • OCR etichette • profili gustativi (pgvector) • generazione note con IA",
+    bullets: [
+      "Scan etichetta e matching bottiglia (OCR + embedding)",
+      "Tasting note strutturate + testo naturale con IA",
+      "Ricerca per similitudine e suggerimenti d’abbinamento",
+    ],
+    tags: ["React Native", "Expo", "OCR", "pgvector", "OpenAI • RAG"],
+  },
+
+  /* --- Nuovi richiesti --- */
+  {
+    title: "OPI Pavia — Manutenzione sito istituzionale",
+    subtitle:
+      "Performance • accessibilità • SEO • aggiornamenti contenuti • sicurezza",
+    bullets: [
+      "Hardening e aggiornamenti periodici del CMS",
+      "Ottimizzazioni Core Web Vitals e audit accessibilità",
+      "Setup GA4 e tracciamenti per reportistica",
+    ],
+    tags: ["Maintenance", "SEO", "Accessibility", "GA4"],
+  },
+  {
+    title: "ALUMNI UNISG — Piattaforma community",
+    subtitle:
+      "Next.js + Supabase • Auth • directory profili • eventi e job board",
+    bullets: [
+      "Directory con profili ricercabili e ruoli",
+      "Gestione eventi con iscrizioni e notifiche",
+      "Policy RLS e schema dati su Supabase",
+    ],
+    tags: ["Next.js", "Supabase", "Auth", "RLS"],
+  },
+  {
+    title: "ARGOTEC — Space Food Lab",
+    subtitle:
+      "R&D pasti per missioni spaziali • knowledge base tecnica • prototipi data-driven",
+    bullets: [
+      "Knowledge base versionata per documentazione R&D",
+      "Tracciamento esperimenti e parametri nutrizionali",
+      "Workshop di discovery e roadmap",
+    ],
+    tags: ["R&D", "FoodTech", "Knowledge Base", "Data"],
+  },
+  {
+    title: "Ambulatorio Veterinario Pero — Sito & automazioni",
+    subtitle: "Next.js • booking richieste • CRM n8n • reminder email/WhatsApp",
+    bullets: [
+      "Sito informativo mobile-first",
+      "Automazioni n8n per richiami/terapie",
+      "Form strutturati con routing automatico",
+    ],
+    tags: ["Next.js", "n8n", "Automations", "CRM"],
+  },
+  {
+    title: "L'AllestiCamper — Rebranding & sito",
+    subtitle:
+      "Ricerca strategica • identità visiva • sito Next.js • catalogo servizi",
+    bullets: [
+      "Analisi competitor e posizionamento",
+      "Linee guida visive e roll-out",
+      "Sito veloce orientato alle lead",
+    ],
+    tags: ["Branding", "Research", "Next.js", "Marketing"],
+  },
+
+  /* --- Esperienze richieste --- */
+  {
+    title: "LiberoBit Srl — Web & Mobile (contract)",
+    subtitle: "React / React Native • Shopify • GSAP • integrazioni API",
+    bullets: [
+      "v1 di una Music App (React & React Native)",
+      "Interfaccia ticketing riusabile su API ZohoDesk",
+      "E-commerce Shopify custom e siti mobile-first con animazioni fluide (GSAP)",
+    ],
+    tags: ["React", "React Native", "Shopify", "GSAP", "ZohoDesk API"],
+  },
+  {
+    title: "Daysix (ScribePro) — React Internship",
+    subtitle: "UI/UX ScribePro • React >16.8 • Hooks • Context/Redux",
+    bullets: [
+      "Componenti UI per una sezione dell’app ScribePro",
+      "Lavoro in team, Git flow e code review",
+      "Introduzione a Hooks, Context API e Redux",
+    ],
+    tags: ["React", "Hooks", "Redux", "Teamwork"],
+  },
+  {
+    title: "BIOBUSTERS — Founder & Technical Consultant",
+    subtitle: "Food Safety 4.0 • Bacteriophages • consulenza per artigiani",
+    bullets: [
+      "Analisi rischi e piani di mitigazione per linee produttive",
+      "Workflow e protocolli per riduzione contaminazioni",
+      "Talk “Food Safety 4.0: innovazione e nuove tecnologie”",
+    ],
+    tags: ["Food Safety", "R&D", "Bacteriophages", "Operations"],
+  },
 ];
 
 const STACK_CLIENTI = {
@@ -96,6 +199,15 @@ const STACK_CLIENTI = {
     "Taste Tribe",
     "DogVeda",
     "Spore Bio (collaborazioni R&D)",
+    "OPI Pavia",
+    "ALUMNI UNISG",
+    "ARGOTEC",
+    "Ambulatorio Veterinario Pero",
+    "L'AllestiCamper",
+    "LiberoBit Srl",
+    "Daysix",
+    "BIOBUSTERS",
+    "Sommelier AI (R&D vino)",
   ],
   stack: [
     "Next.js",
@@ -105,6 +217,7 @@ const STACK_CLIENTI = {
     "Node.js",
     "Strapi",
     "Supabase/Postgres",
+    "pgvector",
     "Vercel",
     "Cloudflare",
     "GA4",
@@ -114,13 +227,20 @@ const STACK_CLIENTI = {
     "Stripe",
     "n8n",
     "OpenAI • RAG",
+    "OCR / Computer Vision",
+    "GSAP",
+    "Shopify",
+    "ZohoDesk API",
+    ".NET / C# (UI integrazione)",
     "GitHub Actions",
+    "Resend",
+    "Tailwind CSS v4",
   ],
 };
 
 export default function Page() {
   const contactEmail =
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@andreacasero.dev";
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "andrecasero@gmail.com";
 
   // Slider percentuale (manteniamo interazione)
   const [share, setShare] = useState(20);
@@ -180,11 +300,23 @@ export default function Page() {
       setSent("err");
     } finally {
       setSending(false);
+      // Chiudi modal dopo invio
+      setTimeout(() => {
+        setOpen(false);
+        // Reset form
+        setName("");
+        setEmail("");
+        setCompany("");
+        setMessage("");
+        setShare(0); // reset share slider
+        setSent(null);
+      }, 500);
     }
   }
 
   return (
     <main className='container'>
+      <BioIntro onCtaClick={() => setOpen(true)} />
       <header className='header'>
         <span className='kicker'>Consulenza · Food Tech & Innovazione</span>
         <h1 className='h1'>
@@ -193,8 +325,9 @@ export default function Page() {
         </h1>
         <p className='sub'>
           Scegli la percentuale della mia capacità annuale da dedicare al tuo
-          progetto. La stima dei costi è proporzionale all’obiettivo annuo di
-          fatturato {cur.format(ENV.target)}.
+          progetto.
+          {/* La stima dei costi è proporzionale all’obiettivo annuo di
+          fatturato {cur.format(ENV.target)}. */}
         </p>
       </header>
 
@@ -205,28 +338,11 @@ export default function Page() {
           <div className='legend' aria-hidden>
             <span className='dot' style={{ background: "var(--accent)" }} />
             <span>La tua quota</span>
-            <span className='dot' style={{ background: "var(--accent-2)" }} />
+            <span
+              className='dot'
+              style={{ background: "var(--accent-2)", opacity: 0.4 }}
+            />
             <span>Disponibilità residua</span>
-          </div>
-        </div>
-
-        <div className='metrics' aria-live='polite'>
-          <div className='metric'>
-            <h4>Quota selezionata</h4>
-            <strong>{share}%</strong>
-            <div className='help'>Regola con lo slider qui sotto.</div>
-          </div>
-          <div className='metric'>
-            <h4>Ore stimate incluse</h4>
-            <strong>{clientHours} h</strong>
-            <div className='help'>Su un totale di ~{totalHours} h/anno.</div>
-          </div>
-          <div className='metric'>
-            <h4>Investimento stimato</h4>
-            <strong>{cur.format(clientCost)}</strong>
-            <div className='help'>
-              Quota di {share}% su {cur.format(ENV.target)}.
-            </div>
           </div>
         </div>
 
@@ -234,25 +350,49 @@ export default function Page() {
           <label className='label' htmlFor='range'>
             Regola la tua fetta (%)
           </label>
-          <input
-            id='range'
-            className='range'
-            type='range'
-            min={5}
-            max={80}
-            step={5}
-            value={share}
-            onChange={(e) => setShare(parseInt(e.target.value, 10))}
-            aria-describedby='rangeHelp'
-          />
+          <div className='rangeWrap'>
+            <input
+              id='range'
+              className='range'
+              type='range'
+              min={1}
+              max={80}
+              step={1}
+              value={share}
+              onChange={(e) => setShare(parseInt(e.target.value, 10))}
+              aria-describedby='rangeHelp'
+              // aggiorna il riempimento del track in WebKit
+              style={{ ["--fill" as string | number]: `${share}%` }}
+            />
+          </div>
           <div id='rangeHelp' className='help'>
             Valori consigliati 5%–60%. Per impegni superiori contattami per un
             retainer dedicato.
           </div>
         </div>
 
-        <div className='metrics' style={{ marginTop: 10 }}>
+        <div className='metrics' aria-live='polite'>
           <div className='metric'>
+            <h4>Quota selezionata</h4>
+            <strong>{share}%</strong>
+            {/* <div className='help'>Regola con lo slider qui sotto.</div> */}
+          </div>
+          <div className='metric'>
+            <h4>Ore stimate incluse</h4>
+            <strong>{clientHours} h</strong>
+            {/* <div className='help'>Su un totale di ~{totalHours} h/anno.</div> */}
+          </div>
+          <div className='metric'>
+            <h4>Investimento stimato</h4>
+            <strong>{cur.format(clientCost)}</strong>
+            {/* <div className='help'>
+              Quota di {share}% su {cur.format(ENV.target)}.
+            </div> */}
+          </div>
+        </div>
+
+        <div className='metrics1' style={{ marginTop: 10 }}>
+          {/* <div className='metric'>
             <h4>Tariffa effettiva stimata</h4>
             <strong>
               {impliedRate > 0 ? cur.format(impliedRate) + "/h" : "-"}
@@ -261,12 +401,12 @@ export default function Page() {
               Calcolata su {ENV.weeks} sett × {ENV.daysPerWeek} gg ×{" "}
               {ENV.hoursPerDay} h.
             </div>
-          </div>
-          <div className='metric'>
+          </div> */}
+          {/* <div className='metric'>
             <h4>Obiettivo annuo</h4>
             <strong>{cur.format(ENV.target)}</strong>
             <div className='help'>Parametri definiti da configurazione.</div>
-          </div>
+          </div> */}
           <div className='metric'>
             <h4>Contatto</h4>
             <strong>
@@ -298,23 +438,23 @@ export default function Page() {
         <div className='servicesShowcase'>
           <article className='svcCard'>
             <div className='svcIcon'>🛠️</div>
-            <h4 className='svcTitle'>
-              Sviluppo & manutenzione — Next.js / React Native
-            </h4>
+            <h4 className='svcTitle'>Sviluppo & programmazione</h4>
             <p className='svcDesc'>
-              Feature, refactor, performance, accessibilità, build mobile (Expo)
-              e integrazioni (GA4, AppsFlyer, OneSignal, SFMC).
+              Feature, refactor, performance, accessibilità, app mobile ,
+              integrazioni e tool aziendali.
             </p>
             <div className='chipset'>
-              <span className='chip tag'>TypeScript</span>
-              <span className='chip tag'>Expo</span>
+              <span className='chip tag'>React Native / Expo</span>
+              <span className='chip tag'>Next js</span>
               <span className='chip tag'>CI/CD</span>
+              <span className='chip tag'>TypeScript</span>
+              <span className='chip tag'>UI / UX</span>
             </div>
           </article>
 
           <article className='svcCard'>
             <div className='svcIcon'>🔧</div>
-            <h4 className='svcTitle'>Manutenzione web e social</h4>
+            <h4 className='svcTitle'>Manutenzione sito web e social</h4>
             <p className='svcDesc'>
               Ottimizzazioni tecniche, performance, SEO on-page e contenuti per
               presidiare brand e canali digital.
@@ -328,7 +468,7 @@ export default function Page() {
 
           <article className='svcCard'>
             <div className='svcIcon'>🧪</div>
-            <h4 className='svcTitle'>Consulenza R&S in ambito food / tech</h4>
+            <h4 className='svcTitle'>Consulenza R&D in ambito food / tech</h4>
             <p className='svcDesc'>
               Ricerca applicata, sperimentazione IA leggera, prototipi
               data-driven e validazione tecnica.
@@ -353,12 +493,15 @@ export default function Page() {
               <span className='chip tag'>MVP</span>
               <span className='chip tag'>Roadmap</span>
               <span className='chip tag'>Growth</span>
+              <span className='chip tag'>Study trip</span>
             </div>
           </article>
         </div>
       </section>
 
       {/* --- Case study --- */}
+      {/* <CaseStudies items={CASE_STUDIES} onCtaClick={() => setOpen(true)} /> */}
+
       <section className='card' style={{ marginTop: 18 }}>
         <div className='sectionHead'>
           <div className='sectionKicker'>Portfolio</div>
@@ -397,6 +540,12 @@ export default function Page() {
       </section>
 
       {/* --- Clienti & stack --- */}
+      {/* <ClientsStack
+        clients={STACK_CLIENTI.clienti}
+        stack={STACK_CLIENTI.stack}
+        contactEmail={contactEmail}
+        onCtaClick={() => setOpen(true)}
+      /> */}
       <section className='card' style={{ marginTop: 18 }}>
         <div className='sectionHead'>
           <div className='sectionKicker'>Collaborazioni & tecnologia</div>
@@ -445,7 +594,9 @@ export default function Page() {
           {ENV.daysPerWeek} giorni × {ENV.hoursPerDay} ore/giorno. Tariffe
           soggette a IVA e condizioni contrattuali.
         </p>
-        <div className='code'>Anno di riferimento: 2026</div>
+        <div className='code'>
+          <p>Anno di riferimento: 2026</p>
+        </div>
       </section>
 
       {/* MODAL lead */}
@@ -563,9 +714,9 @@ export default function Page() {
   );
 }
 
-/** Donut SVG */
+/** Donut SVG - responsive */
 function Donut({ percentage }: { percentage: number }) {
-  const size = 360;
+  const size = 360; // spazio di disegno (viewBox)
   const stroke = 28;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
@@ -577,7 +728,13 @@ function Donut({ percentage }: { percentage: number }) {
       role='img'
       aria-label={`Quota selezionata: ${percentage}%`}
     >
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      {/* width/height 100% per far scalare l'SVG nel contenitore */}
+      <svg
+        width='100%'
+        height='100%'
+        viewBox={`0 0 ${size} ${size}`}
+        preserveAspectRatio='xMidYMid meet'
+      >
         <g transform={`rotate(-90 ${size / 2} ${size / 2})`}>
           <circle
             cx={size / 2}
@@ -601,6 +758,8 @@ function Donut({ percentage }: { percentage: number }) {
           />
         </g>
       </svg>
+
+      {/* valore centrale */}
       <div style={{ position: "absolute", textAlign: "center" }}>
         <div
           style={{
