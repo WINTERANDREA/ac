@@ -115,11 +115,11 @@ export default function BioIntro({ onCtaClick }: Props) {
           </p>
 
           <p className='bioText'>
-            Oggi lavoro come <strong>freelance</strong>. Ho ancora molto da
-            imparare e questo mi tiene sveglio: il mio obiettivo è aiutare
-            persone e team a <strong>trasformare le idee in prodotti</strong>,
-            con cura per performance, accessibilità e risultati. Nel tempo ho
-            arricchito il mio profilo con esperienze in
+            Oggi lavoro come <strong>libero professionista</strong>. Il mio
+            obiettivo è aiutare persone, aziende e team a{" "}
+            <strong>trasformare le idee in prodotti</strong>, con cura per
+            performance, accessibilità e risultati. Nel tempo ho arricchito il
+            mio profilo con esperienze in
             <strong> AI</strong> e una solida base in{" "}
             <strong>blockchain</strong> (ConsenSys Academy, 2021), oltre a
             certificazioni e riconoscimenti nel mio primo mondo, quello del
