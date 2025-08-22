@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useMemo } from "react";
 import FlagIcon from "./FlagIcon";
+import { track } from "@/lib/track";
 
 type Locale = "it" | "en";
 
@@ -31,11 +32,18 @@ export default function LanguageSelector() {
     return segments.join("/") + search + hash;
   };
 
-  const switchLanguage = (next: Locale) => {
-    if (next === locale) return;
-    // remember choice (1y)
-    document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000; SameSite=Lax`;
-    router.replace(buildPath(next));
+  // const switchLanguage = (next: Locale) => {
+  //   if (next === locale) return;
+  //   // remember choice (1y)
+  //   document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000; SameSite=Lax`;
+  //   router.replace(buildPath(next));
+  // };
+  const switchLanguage = (newLocale: "it" | "en") => {
+    if (newLocale === locale) return;
+    track("language_switch", { from: locale, to: newLocale });
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
   };
 
   // Sliding indicator position (0 -> IT, 1 -> EN)

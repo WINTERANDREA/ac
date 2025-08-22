@@ -2,10 +2,11 @@
 
 import BioIntro from "@/components/BioIntro";
 import LanguageSelector from "@/components/LanguageSelector";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import LeadModal from "@/components/LeadModal";
 import Toast from "@/components/Toast";
+import { track, pageview } from "@/lib/track";
 
 // Currency formatter will be defined inside the component to use locale
 
@@ -61,14 +62,29 @@ export default function Page() {
   // Modal
   const [open, setOpen] = useState(false);
 
+  // Track page view on mount
+  useEffect(() => {
+    pageview();
+    track("page_view", {
+      locale: locale,
+      page: "homepage"
+    });
+  }, [locale]);
+
   function handleLeadResult(status: "ok" | "err") {
     if (status === "ok") {
       setToastKind("success");
       setToastMsg(t("modal.successMessage"));
+      track("lead_form_success", {
+        share_percentage: share,
+        estimated_hours: clientHours,
+        estimated_cost: clientCost
+      });
     } else {
       setToastKind("error");
       // append email for clarity, keeping your existing copy
       setToastMsg(`${t("modal.errorMessage")} ${contactEmail}`);
+      track("lead_form_error");
     }
     setToastOpen(true);
   }
@@ -118,7 +134,15 @@ export default function Page() {
               max={80}
               step={1}
               value={share}
-              onChange={(e) => setShare(parseInt(e.target.value, 10))}
+              onChange={(e) => {
+                const newShare = parseInt(e.target.value, 10);
+                setShare(newShare);
+                track("quota_change", {
+                  new_percentage: newShare,
+                  estimated_hours: Math.round((totalHours * newShare) / 100),
+                  estimated_cost: (ENV.target * newShare) / 100
+                });
+              }}
               aria-describedby='rangeHelp'
               // aggiorna il riempimento del track in WebKit
               style={{ ["--fill" as string | number]: `${share}%` }}
@@ -168,14 +192,30 @@ export default function Page() {
           <div className='metric'>
             <h4>{t("metrics.contact")}</h4>
             <strong>
-              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+              <a 
+                href={`mailto:${contactEmail}`}
+                onClick={() => track("contact_click", { 
+                  method: "email", 
+                  location: "hero_metrics" 
+                })}
+              >
+                {contactEmail}
+              </a>
             </strong>
             <div className='help'>{t("metrics.contactHelp")}</div>
           </div>
         </div>
 
         <div className='cta'>
-          <button className='btn' onClick={() => setOpen(true)}>
+          <button className='btn' onClick={() => {
+            track("cta_click", {
+              location: "hero",
+              share_percentage: share,
+              estimated_hours: clientHours,
+              estimated_cost: clientCost
+            });
+            setOpen(true);
+          }}>
             {t("cta.button")}
           </button>
           <span className='help'>{t("cta.help")}</span>
@@ -272,7 +312,13 @@ export default function Page() {
         </div>
 
         <div className='cta'>
-          <button className='btn' onClick={() => setOpen(true)}>
+          <button className='btn' onClick={() => {
+            track("cta_click", {
+              location: "case_studies",
+              share_percentage: share
+            });
+            setOpen(true);
+          }}>
             {tCaseStudies("caseStudies.cta")}
           </button>
           <span className='help'>{tCaseStudies("caseStudies.ctaHelp")}</span>
@@ -309,7 +355,15 @@ export default function Page() {
           <div className='metric'>
             <h4>{t("clientsStack.contactTitle")}</h4>
             <strong>
-              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+              <a 
+                href={`mailto:${contactEmail}`}
+                onClick={() => track("contact_click", { 
+                  method: "email", 
+                  location: "clients_stack" 
+                })}
+              >
+                {contactEmail}
+              </a>
             </strong>
             <div className='help'>{t("clientsStack.contactNote")}</div>
           </div>

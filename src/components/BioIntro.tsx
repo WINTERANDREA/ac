@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { track } from "@/lib/track";
 
 type Props = { onCtaClick?: () => void };
 
@@ -55,7 +56,13 @@ export default function BioIntro({ onCtaClick }: Props) {
         <button
           className='disclosureBtn'
           type='button'
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            const newOpen = !open;
+            setOpen(newOpen);
+            track("bio_toggle", { 
+              action: newOpen ? "expand" : "collapse" 
+            });
+          }}
           aria-expanded={open}
           aria-controls='bio-more'
         >

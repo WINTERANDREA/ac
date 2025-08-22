@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, KeyboardEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { track } from "@/lib/track";
 
 type EnvConfig = {
   target: number;
@@ -77,6 +78,12 @@ export default function LeadModal({
   // open -> focus + ESC
   useEffect(() => {
     if (!open) return;
+    // Track modal open
+    track("lead_modal_open", {
+      share_percentage: share,
+      estimated_hours: clientHours,
+      estimated_cost: clientCost
+    });
     const tmo = setTimeout(() => firstFieldRef.current?.focus(), 10);
     const onEsc = (e: KeyboardEvent | any) => {
       if ((e as KeyboardEvent).key === "Escape") onClose();
@@ -114,7 +121,10 @@ export default function LeadModal({
 
   // click outside
   const onOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === overlayRef.current) onClose();
+    if (e.target === overlayRef.current) {
+      track("lead_modal_close", { method: "overlay_click" });
+      onClose();
+    }
   };
 
   async function submit() {
@@ -138,6 +148,12 @@ export default function LeadModal({
 
     try {
       setSending(true);
+      track("lead_form_submit_start", {
+        share_percentage: share,
+        estimated_hours: clientHours,
+        estimated_cost: clientCost,
+        has_company: company.trim().length > 0
+      });
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -155,7 +171,14 @@ export default function LeadModal({
           hoursPerDay: env.hoursPerDay,
         }),
       });
-      if (!res.ok) throw new Error(await res.text());
+      if (!res.ok) {
+        const errorText = await res.text();
+        track("lead_form_submit_error", {
+          error_type: "server_error",
+          status_code: res.status
+        });
+        throw new Error(errorText);
+      }
       // reset
       setName("");
       setEmail("");
@@ -168,6 +191,9 @@ export default function LeadModal({
       onResult?.("ok");
     } catch (err) {
       console.error(err);
+      track("lead_form_submit_error", {
+        error_type: "network_error"
+      });
       onClose();
       onResult?.("err");
       closeBtnRef.current?.focus();
@@ -197,7 +223,10 @@ export default function LeadModal({
           <button
             ref={closeBtnRef}
             className='leadClose'
-            onClick={onClose}
+            onClick={() => {
+              track("lead_modal_close", { method: "close_button" });
+              onClose();
+            }}
             aria-label={t("modal.closeLabel")}
             type='button'
           >
