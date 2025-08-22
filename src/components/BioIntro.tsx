@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 type Props = { onCtaClick?: () => void };
 
 export default function BioIntro({ onCtaClick }: Props) {
+  const t = useTranslations('bioIntro');
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const avatar =
@@ -44,13 +46,10 @@ export default function BioIntro({ onCtaClick }: Props) {
     <section className='card bioIntro'>
       {/* Colonna testo */}
       <div>
-        <span className='kicker'>Chi sono</span>
-        <h2 className='bioTitle'>Programmazione · Food Tech & Innovazione</h2>
+        <span className='kicker'>{t('kicker')}</span>
+        <h2 className='bioTitle'>{t('title')}</h2>
 
-        <p className='bioLead'>
-          Sviluppo web e app affidabili (<strong>Next.js</strong>,{" "}
-          <strong>React Native</strong>) con un approccio pratico e misurabile.
-        </p>
+        <p className='bioLead'>{t.rich('lead', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
 
         {/* Toggle bio */}
         <button
@@ -60,7 +59,7 @@ export default function BioIntro({ onCtaClick }: Props) {
           aria-expanded={open}
           aria-controls='bio-more'
         >
-          <span>{open ? "Mostra meno" : "Leggi la mia storia"}</span>
+          <span>{open ? t('showLess') : t('showMore')}</span>
           <svg
             className={`chev ${open ? "rot" : ""}`}
             width='18'
@@ -86,53 +85,15 @@ export default function BioIntro({ onCtaClick }: Props) {
           className='disclosure'
           aria-hidden={!open}
         >
-          <p className='bioText'>
-            Sono arrivato all’
-            <strong>Università di Scienze Gastronomiche</strong> grazie a una
-            borsa di studio. Lì è nata la mia passione per il cibo e, quasi in
-            controcampo, per la <strong>tecnologia</strong> applicata al
-            settore. Ho concluso con uno <strong>stage in Argotec</strong> e una{" "}
-            <strong>tesi sulla produzione di pasti per astronauti</strong>:
-            un’esperienza che mi ha insegnato metodo e attenzione ai dettagli.
-          </p>
+          <p className='bioText'>{t.rich('bio1', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
 
-          <p className='bioText'>
-            Dopo un periodo tra <strong>produzione casearia</strong> e{" "}
-            <strong>consulenza in sicurezza alimentare</strong>, ho capito che
-            cercavo un modo diverso per creare valore. Nel 2017 ho lasciato la
-            comfort zone e sono partito per la <strong>Scozia</strong> per
-            migliorare l’inglese e cambiare prospettiva. Lì ho incontrato
-            persone che si erano formate da autodidatte: mi si è accesa una
-            lampadina.
-          </p>
+          <p className='bioText'>{t.rich('bio2', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
 
-          <p className='bioText'>
-            Ho scelto <strong>Bangalore</strong> (India) per tre mesi intensivi:
-            vita spartana, tante domande, e i primi passi seri nello{" "}
-            <strong>sviluppo web e mobile</strong>. Da allora, tra corsi online,
-            progetti reali e notti a provare, sbagliare e rifare, ho continuato
-            a crescere con costanza.
-          </p>
+          <p className='bioText'>{t.rich('bio3', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
 
-          <p className='bioText'>
-            Oggi lavoro come <strong>libero professionista</strong>. Il mio
-            obiettivo è aiutare persone, aziende e team a{" "}
-            <strong>trasformare le idee in prodotti</strong>, con cura per
-            performance, accessibilità e risultati. Nel tempo ho arricchito il
-            mio profilo con esperienze in
-            <strong> AI</strong> e una solida base in{" "}
-            <strong>blockchain</strong> (ConsenSys Academy, 2021), oltre a
-            certificazioni e riconoscimenti nel mio primo mondo, quello del
-            food.
-          </p>
+          <p className='bioText'>{t.rich('bio4', { strong: (chunks) => <strong>{chunks}</strong> })}</p>
 
-          <p className='bioText'>
-            Per questo ho creato un formato semplice: il mio tempo è{" "}
-            <em>prenotabile a quota</em>. Scegli la percentuale della mia
-            disponibilità annuale e vedi subito <strong>ore</strong> e{" "}
-            <strong>investimento</strong>. È trasparente, pianificabile e ti
-            permette di concentrarti sul prodotto.
-          </p>
+          <p className='bioText'>{t.rich('bio5', { strong: (chunks) => <strong>{chunks}</strong>, em: (chunks) => <em>{chunks}</em> })}</p>
         </div>
 
         {/* === Blocco con stile iniziale, sopra i tag === */}
@@ -165,7 +126,7 @@ export default function BioIntro({ onCtaClick }: Props) {
       <div className='bioPhoto' aria-hidden='true'>
         <Image
           src={avatar}
-          alt='Foto di Andrea Casero'
+          alt={t('altText')}
           width={720}
           height={540}
           loading='lazy'
@@ -173,11 +134,11 @@ export default function BioIntro({ onCtaClick }: Props) {
       </div>
       {/* Tag */}
       <div className='chipset' style={{ marginTop: 10 }}>
-        <span className='chip'>UNISG Alumni</span>
-        <span className='chip'>ConsenSys ’21</span>
-        <span className='chip'>AI &amp; Data</span>
-        <span className='chip'>Next.js / React Native</span>
-        <span className='chip'>Food Tech</span>
+        <span className='chip'>{t('tags.unisg')}</span>
+        <span className='chip'>{t('tags.consensys')}</span>
+        <span className='chip'>{t('tags.ai')}</span>
+        <span className='chip'>{t('tags.tech')}</span>
+        <span className='chip'>{t('tags.food')}</span>
       </div>
     </section>
   );

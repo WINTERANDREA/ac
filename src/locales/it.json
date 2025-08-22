@@ -1,0 +1,326 @@
+{
+  "bioIntro": {
+    "kicker": "Chi sono",
+    "title": "Programmazione · Food Tech & Innovazione",
+    "lead": "Sviluppo web e app affidabili (<strong>Next.js</strong>, <strong>React Native</strong>) con un approccio pratico e misurabile.",
+    "showMore": "Leggi la mia storia",
+    "showLess": "Mostra meno",
+    "bio1": "Sono arrivato all' <strong>Università di Scienze Gastronomiche</strong> grazie a una borsa di studio. Lì è nata la mia passione per il cibo e, quasi in controcampo, per la <strong>tecnologia</strong> applicata al settore. Ho concluso con uno <strong>stage in Argotec</strong> e una <strong>tesi sulla produzione di pasti per astronauti</strong>: un'esperienza che mi ha insegnato metodo e attenzione ai dettagli.",
+    "bio2": "Dopo un periodo tra <strong>produzione casearia</strong> e <strong>consulenza in sicurezza alimentare</strong>, ho capito che cercavo un modo diverso per creare valore. Nel 2017 ho lasciato la comfort zone e sono partito per la <strong>Scozia</strong> per migliorare l'inglese e cambiare prospettiva. Lì ho incontrato persone che si erano formate da autodidatte: mi si è accesa una lampadina.",
+    "bio3": "Ho scelto <strong>Bangalore</strong> (India) per tre mesi intensivi: vita spartana, tante domande, e i primi passi seri nello <strong>sviluppo web e mobile</strong>. Da allora, tra corsi online, progetti reali e notti a provare, sbagliare e rifare, ho continuato a crescere con costanza.",
+    "bio4": "Oggi lavoro come <strong>libero professionista</strong>. Il mio obiettivo è aiutare persone, aziende e team a <strong>trasformare le idee in prodotti</strong>, con cura per performance, accessibilità e risultati. Nel tempo ho arricchito il mio profilo con esperienze in <strong>AI</strong> e una solida base in <strong>blockchain</strong> (ConsenSys Academy, 2021), oltre a certificazioni e riconoscimenti nel mio primo mondo, quello del food.",
+    "bio5": "Per questo ho creato un formato semplice: il mio tempo è <em>prenotabile a quota</em>. Scegli la percentuale della mia disponibilità annuale e vedi subito <strong>ore</strong> e <strong>investimento</strong>. È trasparente, pianificabile e ti permette di concentrarti sul prodotto.",
+    "altText": "Foto di Andrea Casero",
+    "tags": {
+      "unisg": "UNISG Alumni",
+      "consensys": "ConsenSys '21",
+      "ai": "AI & Data",
+      "tech": "Next.js / React Native",
+      "food": "Food Tech"
+    }
+  },
+  "caseStudies": {
+    "kicker": "Portfolio",
+    "title": "Case study selezionati",
+    "cta": "Parliamo del tuo progetto",
+    "ctaHelp": "Indicami obiettivi, scadenze e team coinvolti."
+  },
+  "clientsStack": {
+    "kicker": "Collaborazioni & tecnologia",
+    "title": "Clienti & stack",
+    "clientsTitle": "Clienti / progetti",
+    "stackTitle": "Stack principale",
+    "contactTitle": "Contatto",
+    "contactNote": "Disponibilità 2026 su prenotazione a quote. Rispondo entro 24h lavorative.",
+    "contactEmail": "Scrivimi",
+    "contactCall": "Richiedi una call"
+  },
+  "homePage": {
+    "mainTitle": "Prenota la tua \"quota\" di <span>disponibilità 2026</span>",
+    "mainSubtitle": "Scegli la percentuale della mia capacità annuale da dedicare al tuo progetto.",
+    "heroLabel": "Selettore quota e stima",
+    "legend": {
+      "yourQuota": "La tua quota",
+      "remaining": "Disponibilità residua"
+    },
+    "controls": {
+      "rangeLabel": "Regola la tua quota (%)",
+      "rangeHelp": "Valori consigliati 5%–60%. Per impegni superiori contattami per un retainer dedicato."
+    },
+    "metrics": {
+      "quotaSelected": "Quota selezionata",
+      "estimatedHours": "Ore stimate incluse",
+      "estimatedInvestment": "Investimento stimato",
+      "contact": "Contatto",
+      "contactHelp": "Disponibilità 2026 su prenotazione a quote."
+    },
+    "cta": {
+      "button": "Blocca la tua quota 2026",
+      "help": "Compila i dettagli progetto e invia la richiesta."
+    },
+    "services": {
+      "kicker": "Cosa posso fare per te",
+      "title": "Servizi",
+      "development": {
+        "title": "Sviluppo & programmazione",
+        "description": "Feature, refactor, performance, accessibilità, app mobile , integrazioni e tool aziendali."
+      },
+      "maintenance": {
+        "title": "Manutenzione sito web e social",
+        "description": "Ottimizzazioni tecniche, performance, SEO on-page e contenuti per presidiare brand e canali digital."
+      },
+      "consulting": {
+        "title": "Consulenza R&D in ambito food / tech",
+        "description": "Ricerca applicata, sperimentazione IA leggera, prototipi data-driven e validazione tecnica."
+      },
+      "startup": {
+        "title": "Supporto a startup / progetti personali",
+        "description": "Architettura MVP, roadmap, scalabilità e go-to-market per iniziative early-stage."
+      }
+    },
+    "notes": {
+      "title": "Note e condizioni",
+      "description": "La selezione rappresenta una stima indicativa. Per percentuali oltre il 60% o esigenze di reperibilità, proponiamo un <em>retainer</em> dedicato. Le ore sono calcolate su base {weeks} settimanale × {daysPerWeek} giorni × {hoursPerDay} ore/giorno. Tariffe soggette a IVA e condizioni contrattuali.",
+      "year": "Anno di riferimento: 2026"
+    },
+    "modal": {
+      "title": "Richiesta quota {share}% — 2026",
+      "closeLabel": "Chiudi",
+      "hoursIncluded": "Ore incluse ~ <strong>{clientHours}h</strong> · Investimento ~ <strong>{clientCost}</strong>",
+      "nameLabel": "Nome e cognome",
+      "namePlaceholder": "Mario Rossi",
+      "emailLabel": "Email",
+      "emailPlaceholder": "mario@azienda.it",
+      "companyLabel": "Azienda (opzionale)",
+      "companyPlaceholder": "Azienda S.p.A.",
+      "messageLabel": "Messaggio",
+      "messagePlaceholder": "Ambito, obiettivi, scadenze, team coinvolto...",
+      "submitButton": "Invia richiesta",
+      "submittingButton": "Invio in corso...",
+      "successMessage": "Ricevuto! Ti rispondo a breve.",
+      "errorMessage": "Errore invio. Riprova o scrivi a",
+      "emailInvalid": "Email non valida",
+      "messageRequired": "Il messaggio è obbligatorio"
+    },
+    "donut": {
+      "ariaLabel": "Quota selezionata: {percentage}%",
+      "label": "La tua quota"
+    },
+    "clientsStack": {
+      "kicker": "Collaborazioni & tecnologia",
+      "title": "Clienti & stack",
+      "clientsTitle": "Clienti / progetti",
+      "stackTitle": "Stack principale",
+      "contactTitle": "Contatto",
+      "contactNote": "Disponibilità 2026 su prenotazione a quote. Rispondo entro 24h lavorative."
+    }
+  },
+  "languageSelector": {
+    "switchToItalian": "Cambia lingua in italiano",
+    "switchToEnglish": "Switch language to English",
+    "italian": "Italiano",
+    "english": "English"
+  },
+  "metadata": {
+    "title": "Andrea Casero — Food Tech & Innovation",
+    "description": "Consulente e sviluppatore freelance (Next.js, React Native). Calcola la tua quota 2026 e scopri case study e stack di lavoro."
+  },
+  "caseStudiesData": [
+    {
+      "title": "Cortilia — App mobile refactor",
+      "subtitle": "React Native + Expo • GA4 + AppsFlyer • CMP (DMA) • Push (OneSignal) • integrazione Salesforce Marketing Cloud",
+      "bullets": [
+        "Refactor su nuova architettura Expo, fixing di build e dipendenze",
+        "Tracciamenti eventi e schermi (GA4/AppsFlyer) con consenso CMP",
+        "Stabilizzazione push iOS/Android (OneSignal) e bridge MC SDK"
+      ],
+      "tags": ["React Native", "Expo", "AppsFlyer", "GA4", "OneSignal", "SFMC"]
+    },
+    {
+      "title": "Tosi Gorgonzola — Go-to-market & digitale",
+      "subtitle": "Ricerca mercato 🇰🇷 • e-commerce feasibility • CRM • sito Next.js • contenuti",
+      "bullets": [
+        "Modello di ricerca e validazione per espansione in Corea del Sud",
+        "Sito/landing in Next.js e struttura CRM per B2B/retail",
+        "Supporto branding e contenuti di prodotto"
+      ],
+      "tags": ["Next.js", "CRM", "Content", "FoodTech"]
+    },
+    {
+      "title": "Elevage Nursing — MVP & workflow",
+      "subtitle": "Prototipo matching pazienti-infermiere • workflow Slack • dominio elevagenursing.com",
+      "bullets": [
+        "Architettura MVP per canali patologici e triage richieste",
+        "Base dati contatti e mappature territoriali per copertura",
+        "Roadmap piattaforma e landing informativa"
+      ],
+      "tags": ["Product", "Workflow", "Ops", "Health"]
+    },
+    {
+      "title": "Taste Tribe — Viaggi gastronomici",
+      "subtitle": "Brand • landing prenotazioni • itinerari produttori • marketing",
+      "bullets": [
+        "Definizione proposta valore e format esperienze",
+        "Landing con call-to-action e gestione richieste",
+        "Materiali promo per campagne"
+      ],
+      "tags": ["Branding", "Next.js", "TravelOps", "Food"]
+    },
+    {
+      "title": "DogVeda — Piattaforma veterinaria consapevole",
+      "subtitle": "Informazione & community • IA leggera per contenuti • flussi editoriali",
+      "bullets": [
+        "Information architecture e tassonomia contenuti",
+        "Piano editoriale e flussi di pubblicazione",
+        "Sperimentazione Q&A assistito"
+      ],
+      "tags": ["Content", "IA", "Community"]
+    },
+    {
+      "title": "Agentic outreach — ristoranti Michelin",
+      "subtitle": "Pipeline scraping (Google Places + Overpass) • arricchimento contatti • outreach",
+      "bullets": [
+        "Raccolta e normalizzazione dati contatti (dataset export)",
+        "Automazioni outreach e tracking risposte",
+        "Struttura riuso per altri verticali"
+      ],
+      "tags": ["Python/Node", "n8n", "Data", "Automation"]
+    },
+    {
+      "title": "Sommelier AI — App vino con tasting note",
+      "subtitle": "React Native + Expo • OCR etichette • profili gustativi (pgvector) • generazione note con IA",
+      "bullets": [
+        "Scan etichetta e matching bottiglia (OCR + embedding)",
+        "Tasting note strutturate + testo naturale con IA",
+        "Ricerca per similitudine e suggerimenti d'abbinamento"
+      ],
+      "tags": ["React Native", "Expo", "OCR", "pgvector", "OpenAI • RAG"]
+    },
+    {
+      "title": "OPI Pavia — Manutenzione sito istituzionale",
+      "subtitle": "Performance • accessibilità • SEO • aggiornamenti contenuti • sicurezza",
+      "bullets": [
+        "Hardening e aggiornamenti periodici del CMS",
+        "Ottimizzazioni Core Web Vitals e audit accessibilità",
+        "Setup GA4 e tracciamenti per reportistica"
+      ],
+      "tags": ["Maintenance", "SEO", "Accessibility", "GA4"]
+    },
+    {
+      "title": "ALUMNI UNISG — Piattaforma community",
+      "subtitle": "Next.js + Supabase • Auth • directory profili • eventi e job board",
+      "bullets": [
+        "Directory con profili ricercabili e ruoli",
+        "Gestione eventi con iscrizioni e notifiche",
+        "Policy RLS e schema dati su Supabase"
+      ],
+      "tags": ["Next.js", "Supabase", "Auth", "RLS"]
+    },
+    {
+      "title": "ARGOTEC — Space Food Lab",
+      "subtitle": "R&D pasti per missioni spaziali • knowledge base tecnica • prototipi data-driven",
+      "bullets": [
+        "Knowledge base versionata per documentazione R&D",
+        "Tracciamento esperimenti e parametri nutrizionali",
+        "Workshop di discovery e roadmap"
+      ],
+      "tags": ["R&D", "FoodTech", "Knowledge Base", "Data"]
+    },
+    {
+      "title": "Ambulatorio Veterinario Pero — Sito & automazioni",
+      "subtitle": "Next.js • booking richieste • CRM n8n • reminder email/WhatsApp",
+      "bullets": [
+        "Sito informativo mobile-first",
+        "Automazioni n8n per richiami/terapie",
+        "Form strutturati con routing automatico"
+      ],
+      "tags": ["Next.js", "n8n", "Automations", "CRM"]
+    },
+    {
+      "title": "L'AllestiCamper — Rebranding & sito",
+      "subtitle": "Ricerca strategica • identità visiva • sito Next.js • catalogo servizi",
+      "bullets": [
+        "Analisi competitor e posizionamento",
+        "Linee guida visive e roll-out",
+        "Sito veloce orientato alle lead"
+      ],
+      "tags": ["Branding", "Research", "Next.js", "Marketing"]
+    },
+    {
+      "title": "LiberoBit Srl — Web & Mobile (contract)",
+      "subtitle": "React / React Native • Shopify • GSAP • integrazioni API",
+      "bullets": [
+        "v1 di una Music App (React & React Native)",
+        "Interfaccia ticketing riusabile su API ZohoDesk",
+        "E-commerce Shopify custom e siti mobile-first con animazioni fluide (GSAP)"
+      ],
+      "tags": ["React", "React Native", "Shopify", "GSAP", "ZohoDesk API"]
+    },
+    {
+      "title": "Daysix (ScribePro) — React Internship",
+      "subtitle": "UI/UX ScribePro • React >16.8 • Hooks • Context/Redux",
+      "bullets": [
+        "Componenti UI per una sezione dell'app ScribePro",
+        "Lavoro in team, Git flow e code review",
+        "Introduzione a Hooks, Context API e Redux"
+      ],
+      "tags": ["React", "Hooks", "Redux", "Teamwork"]
+    },
+    {
+      "title": "BIOBUSTERS — Founder & Technical Consultant",
+      "subtitle": "Food Safety 4.0 • Bacteriophages • consulenza per artigiani",
+      "bullets": [
+        "Analisi rischi e piani di mitigazione per linee produttive",
+        "Workflow e protocolli per riduzione contaminazioni",
+        "Talk \"Food Safety 4.0: innovazione e nuove tecnologie\""
+      ],
+      "tags": ["Food Safety", "R&D", "Bacteriophages", "Operations"]
+    }
+  ],
+  "stackClienti": {
+    "clienti": [
+      "Tosi Gorgonzola",
+      "Cortilia",
+      "Elevage Nursing",
+      "Taste Tribe",
+      "DogVeda",
+      "Spore Bio (collaborazioni R&D)",
+      "OPI Pavia",
+      "ALUMNI UNISG",
+      "ARGOTEC",
+      "Ambulatorio Veterinario Pero",
+      "L'AllestiCamper",
+      "LiberoBit Srl",
+      "Daysix",
+      "BIOBUSTERS",
+      "Sommelier AI (R&D vino)"
+    ],
+    "stack": [
+      "Next.js",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Node.js",
+      "Strapi",
+      "Supabase/Postgres",
+      "pgvector",
+      "Vercel",
+      "Cloudflare",
+      "GA4",
+      "AppsFlyer",
+      "OneSignal",
+      "Salesforce MC",
+      "Stripe",
+      "n8n",
+      "OpenAI • RAG",
+      "OCR / Computer Vision",
+      "GSAP",
+      "Shopify",
+      "ZohoDesk API",
+      ".NET / C# (UI integrazione)",
+      "GitHub Actions",
+      "Resend",
+      "Tailwind CSS v4"
+    ]
+  }
+}

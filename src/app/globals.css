@@ -641,3 +641,11 @@ textarea {
   background: var(--accent-2);
   opacity: 0.6;
 }
+
+/* Language selector styles */
+.language-selector-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
