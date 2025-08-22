@@ -318,9 +318,9 @@ export default function Page() {
     <main className='container'>
       <BioIntro onCtaClick={() => setOpen(true)} />
       <header className='header'>
-        <span className='kicker'>Consulenza · Food Tech & Innovazione</span>
-        <h1 className='h1'>
-          Prenota la tua “fetta” di{" "}
+        {/* <span className='kicker'>Consulenza · Food Tech & Innovazione</span> */}
+        <h1 className='h1 mt-5'>
+          Prenota la tua “quota” di{" "}
           <span style={{ color: "var(--accent)" }}>disponibilità 2026</span>
         </h1>
         <p className='sub'>
@@ -348,7 +348,7 @@ export default function Page() {
 
         <div className='controls' style={{ marginTop: 18 }}>
           <label className='label' htmlFor='range'>
-            Regola la tua fetta (%)
+            Regola la tua quota (%)
           </label>
           <div className='rangeWrap'>
             <input
@@ -770,7 +770,7 @@ function Donut({ percentage }: { percentage: number }) {
             textTransform: "uppercase",
           }}
         >
-          La tua fetta
+          La tua quota
         </div>
         <div style={{ fontSize: 44, fontWeight: 900 }}>{percentage}%</div>
       </div>

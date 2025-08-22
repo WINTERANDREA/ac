@@ -8,7 +8,8 @@ type Props = { onCtaClick?: () => void };
 export default function BioIntro({ onCtaClick }: Props) {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const avatar = process.env.NEXT_PUBLIC_AVATAR_URL || "/branding/portrait.jpg";
+  const avatar =
+    process.env.NEXT_PUBLIC_AVATAR_URL || "/branding/portrait3.png";
 
   // Animazione apertura/chiusura misurando l'altezza reale
   useEffect(() => {
@@ -44,9 +45,7 @@ export default function BioIntro({ onCtaClick }: Props) {
       {/* Colonna testo */}
       <div>
         <span className='kicker'>Chi sono</span>
-        <h2 className='bioTitle'>
-          Front-end &amp; Food Tech, con i piedi per terra
-        </h2>
+        <h2 className='bioTitle'>Programmazione · Food Tech & Innovazione</h2>
 
         <p className='bioLead'>
           Sviluppo web e app affidabili (<strong>Next.js</strong>,{" "}
@@ -137,7 +136,7 @@ export default function BioIntro({ onCtaClick }: Props) {
         </div>
 
         {/* === Blocco con stile iniziale, sopra i tag === */}
-        <div className='featureCard' style={{ marginTop: 10 }}>
+        {/* <div className='featureCard' style={{ marginTop: 10 }}>
           <div className='bioBadge'>Disponibilità 2026</div>
           <div className='bioRow'>
             <span>Quota %</span>
@@ -149,26 +148,17 @@ export default function BioIntro({ onCtaClick }: Props) {
           <div className='bioRow subtle'>
             Priorità concordata · Report mensili · Focus prodotto
           </div>
-        </div>
-
-        {/* Tag */}
-        <div className='chipset' style={{ marginTop: 10 }}>
-          <span className='chip'>UNISG Alumni</span>
-          <span className='chip'>ConsenSys ’21</span>
-          <span className='chip'>AI &amp; Data</span>
-          <span className='chip'>Next.js / React Native</span>
-          <span className='chip'>Food Tech</span>
-        </div>
+        </div> */}
 
         {/* CTA */}
-        <div className='cta'>
+        {/* <div className='cta'>
           <button className='btn' onClick={onCtaClick}>
             Blocca la tua quota 2026
           </button>
           <span className='help'>
             Breve call per allinearci su obiettivi e timing.
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Colonna foto */}
@@ -180,6 +170,14 @@ export default function BioIntro({ onCtaClick }: Props) {
           height={540}
           loading='lazy'
         />
+      </div>
+      {/* Tag */}
+      <div className='chipset' style={{ marginTop: 10 }}>
+        <span className='chip'>UNISG Alumni</span>
+        <span className='chip'>ConsenSys ’21</span>
+        <span className='chip'>AI &amp; Data</span>
+        <span className='chip'>Next.js / React Native</span>
+        <span className='chip'>Food Tech</span>
       </div>
     </section>
   );
