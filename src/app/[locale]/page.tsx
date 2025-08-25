@@ -44,7 +44,7 @@ export default function Page() {
   const faqItems = (tFaq.raw("items") as FaqItem[]) || [];
 
   // Slider percentuale
-  const [share, setShare] = useState(20);
+  const [share, setShare] = useState(0);
 
   const [toastOpen, setToastOpen] = useState(false);
   const [toastKind, setToastKind] = useState<"success" | "error">("success");
