@@ -80,7 +80,8 @@
     },
     "notes": {
       "title": "Note e condizioni",
-      "description": "La selezione rappresenta una stima indicativa. Per percentuali oltre il 60% o esigenze di reperibilità, proponiamo un <em>retainer</em> dedicato. Le ore sono calcolate su base {weeks} settimanale × {daysPerWeek} giorni × {hoursPerDay} ore/giorno. Tariffe soggette a IVA e condizioni contrattuali.",
+      "description": "La selezione rappresenta una stima indicativa. Per percentuali oltre il 60% o esigenze di reperibilità, proponiamo un <em>retainer</em> dedicato.",
+      "iva_info": "Tariffe in regime forfettario non soggette ad IVA.",
       "year": "Anno di riferimento: 2026"
     },
     "modal": {
@@ -113,6 +114,23 @@
       "stackTitle": "Stack principale",
       "contactTitle": "Contatto",
       "contactNote": "Disponibilità 2026 su prenotazione a quote. Rispondo entro 24h lavorative."
+    },
+    "teaser": {
+      "badge": "Nuovo",
+      "title": "MVP Sprint · Impara & costruisci in 1–2 settimane",
+      "subtitle": "Percorso pratico (online/on-site) per validare la tua idea con basi di programmazione e tool AI.",
+      "bullets": [
+        "Fondamenta di JS/React + tool AI per prototipare",
+        "Prototipo testabile a fine percorso",
+        "Mentorship 1:1 e materiali operativi"
+      ],
+      "chips": [
+        "Online/On-site",
+        "1–2 settimane",
+        "Per studenti e career switchers"
+      ],
+      "cta": "Prenota una discovery call",
+      "help": "Nessun impegno: capiamo obiettivi e tempi."
     }
   },
   "languageSelector": {
@@ -321,6 +339,123 @@
       "GitHub Actions",
       "Resend",
       "Tailwind CSS v4"
+    ]
+  },
+  "servicesPro": {
+    "ariaLabel": "Panoramica servizi",
+    "kicker": "Cosa posso fare per te",
+    "title": "Servizi — chiari, modulari, orientati al risultato",
+    "menuLabel": "Menu servizi",
+    "stackLabel": "Tecnologie e ambiti",
+    "defaultCta": "Parliamo del progetto",
+    "ctaHelp": "Allineiamo obiettivi, scadenze e priorità.",
+    "items": [
+      {
+        "id": "dev",
+        "icon": "🛠️",
+        "kicker": "Sviluppo / Feature",
+        "title": "Sviluppo & programmazione",
+        "desc": "Next.js e React Native per portare in produzione feature robuste, performanti e accessibili.",
+        "bullets": [
+          "Refactor e performance (Core Web Vitals, bundle, caching)",
+          "Sviluppo App mobile (Expo) e integrazioni SDK",
+          "Design system leggero + UI stateful",
+          "CI/CD, ambienti, rollout e osservabilità"
+        ],
+        "tags": [
+          "Next.js",
+          "React Native / Expo",
+          "TypeScript",
+          "CI/CD",
+          "A11y"
+        ],
+        "cta": "Richiedi un intervento"
+      },
+      {
+        "id": "maint",
+        "icon": "🔧",
+        "kicker": "Cura continua",
+        "title": "Manutenzione sito & contenuti",
+        "desc": "Un presidio semplice per tenere il sito veloce, aggiornato e tracciato correttamente.",
+        "bullets": [
+          "Aggiornamenti CMS, sicurezza e backup",
+          "Ottimizzazioni SEO on-page e dati strutturati",
+          "Report mensili con KPI chiave",
+          "Micro-migliorie UX e contenuti"
+        ],
+        "tags": ["SEO", "CWV", "GA4", "OpenGraph", "Schema.org"]
+      },
+      {
+        "id": "rnd",
+        "icon": "🧪",
+        "kicker": "R&D • Food/Tech",
+        "title": "Consulenza e prototipi data-driven",
+        "desc": "Sperimentazioni leggere con IA, automazioni e basi dati per validare velocemente valore.",
+        "bullets": [
+          "RAG/embedding per knowledge base e Q&A",
+          "Automazioni n8n e flussi operativi",
+          "Prototipi con Supabase/pgvector",
+          "Misurazione, test e pivot rapidi"
+        ],
+        "tags": ["OpenAI • RAG", "n8n", "Supabase", "pgvector"]
+      },
+      {
+        "id": "startup",
+        "icon": "🚀",
+        "kicker": "Early-stage",
+        "title": "Supporto a startup / side-project",
+        "desc": "Dalla definizione del problema al primo MVP misurabile, con roadmap e canali chiari.",
+        "bullets": [
+          "Architettura MVP e scelte make/buy",
+          "Roadmap e milestone misurabili",
+          "Go-to-market iniziale e feedback loop",
+          "Documentazione minima sostenibile"
+        ],
+        "tags": ["MVP", "Roadmap", "Growth", "Research"]
+      },
+      {
+        "id": "fastlab",
+        "icon": "🎓",
+        "kicker": "Formazione B2C",
+        "title": "Idea Sprint Lab (studenti & career switch)",
+        "desc": "Percorsi 1:1 o micro-classi, online/on-site, per imparare le basi di programmazione e i tool IA e trasformare un'idea in un prototipo testabile in pochi giorni.",
+        "bullets": [
+          "Fondamenti moderni: HTML/CSS/JS, Git, basi API",
+          "IA & tool: prompt, RAG leggero, automazioni n8n, no/low-code",
+          "Metodo: definizione problema, MVP, metriche e test",
+          "Deliverable: micro-prototipo, checklist e prossimi step"
+        ],
+        "tags": [
+          "Coaching",
+          "AI Tools",
+          "No/Low-code",
+          "MVP",
+          "n8n",
+          "Supabase"
+        ],
+        "cta": "Prenota una 1:1"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "items": [
+      {
+        "question": "Come funziona la prenotazione a quota?",
+        "answer": "Scegli una percentuale della mia disponibilità annuale. Vedi subito ore stimate e investimento. Fissiamo una call per allineare obiettivi, priorità e tempi."
+      },
+      {
+        "question": "Offri supporto per idee early-stage?",
+        "answer": "Sì. Con l’MVP Sprint ti aiuto a definire il perimetro, a costruire un prototipo leggero e a validarlo sul campo con costi minimi."
+      },
+      {
+        "question": "Posso imparare le basi per costruire in autonomia?",
+        "answer": "Certo: il percorso include basi di programmazione moderne (JavaScript/Next.js) e tool AI, per passare dall’idea al test rapidamente."
+      },
+      {
+        "question": "Lavori anche on-site?",
+        "answer": "Sì, su richiesta e per finestre temporali definite (workshop, discovery, sprint). In remoto disponibilità continua."
+      }
     ]
   }
 }

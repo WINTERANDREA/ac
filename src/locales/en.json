@@ -17,6 +17,12 @@
       "ai": "AI & Data",
       "tech": "Next.js / React Native",
       "food": "Food Tech"
+    },
+    "teaser": {
+      "badgeNew": "New",
+      "title": "Programming & AI to launch your MVP",
+      "desc": "From zero to prototype: HTML/CSS/JS, Git, APIs, AI tools and no/low-code. 1:1 or micro-classes, online/on-site.",
+      "cta": "Book a 1:1"
     }
   },
   "caseStudies": {
@@ -80,7 +86,8 @@
     },
     "notes": {
       "title": "Notes and conditions",
-      "description": "The selection represents an indicative estimate. For percentages over 60% or availability requirements, we propose a dedicated <em>retainer</em>. Hours are calculated on a {weeks} weekly × {daysPerWeek} days × {hoursPerDay} hours/day basis. Rates subject to VAT and contractual conditions.",
+      "description": "The selection represents an indicative estimate. For percentages over 60% or availability requirements, we propose a dedicated <em>retainer</em>.",
+      "iva_info": "Rates subject to VAT and contractual conditions.",
       "year": "Reference year: 2026"
     },
     "modal": {
@@ -113,6 +120,23 @@
       "stackTitle": "Main stack",
       "contactTitle": "Contact",
       "contactNote": "2026 availability by quota booking. I reply within 24 business hours."
+    },
+    "teaser": {
+      "badge": "New",
+      "title": "MVP Sprint · Learn & build in 1–2 weeks",
+      "subtitle": "Hands-on path (online/on-site) to validate your idea using coding fundamentals and AI tools.",
+      "bullets": [
+        "JS/React basics + AI tools for rapid prototyping",
+        "A testable prototype by the end",
+        "1:1 mentorship and actionable material"
+      ],
+      "chips": [
+        "Online/On-site",
+        "1–2 weeks",
+        "For students & career switchers"
+      ],
+      "cta": "Book a discovery call",
+      "help": "No commitment: we align on goals and timing."
     }
   },
   "languageSelector": {
@@ -321,6 +345,123 @@
       "GitHub Actions",
       "Resend",
       "Tailwind CSS v4"
+    ]
+  },
+  "servicesPro": {
+    "ariaLabel": "Services overview",
+    "kicker": "What I can do for you",
+    "title": "Services — clear, modular, outcome-driven",
+    "menuLabel": "Services menu",
+    "stackLabel": "Technologies & domains",
+    "defaultCta": "Let's talk",
+    "ctaHelp": "We’ll align goals, deadlines and priorities.",
+    "items": [
+      {
+        "id": "dev",
+        "icon": "🛠️",
+        "kicker": "Build / Features",
+        "title": "Development & programming",
+        "desc": "Next.js and React Native to ship robust, fast and accessible features.",
+        "bullets": [
+          "Refactor & performance (CWV, bundle, caching)",
+          "Mobile apps (Expo) & SDK integrations",
+          "Lightweight design system + stateful UI",
+          "CI/CD, environments, rollout & observability"
+        ],
+        "tags": [
+          "Next.js",
+          "React Native / Expo",
+          "TypeScript",
+          "CI/CD",
+          "A11y"
+        ],
+        "cta": "Request an intervention"
+      },
+      {
+        "id": "maint",
+        "icon": "🔧",
+        "kicker": "Care & upkeep",
+        "title": "Website maintenance & content",
+        "desc": "Keep the site fast, updated and properly tracked with a simple ongoing plan.",
+        "bullets": [
+          "CMS updates, security and backups",
+          "On-page SEO and structured data",
+          "Monthly KPI report",
+          "UX micro-improvements & content"
+        ],
+        "tags": ["SEO", "CWV", "GA4", "OpenGraph", "Schema.org"]
+      },
+      {
+        "id": "rnd",
+        "icon": "🧪",
+        "kicker": "R&D • Food/Tech",
+        "title": "Consulting & data-driven prototypes",
+        "desc": "Light AI experiments, automations and data stores to validate value quickly.",
+        "bullets": [
+          "RAG/embeddings for KB & Q&A",
+          "n8n automations and ops flows",
+          "Prototypes with Supabase/pgvector",
+          "Measurement, tests and quick pivots"
+        ],
+        "tags": ["OpenAI • RAG", "n8n", "Supabase", "pgvector"]
+      },
+      {
+        "id": "startup",
+        "icon": "🚀",
+        "kicker": "Early-stage",
+        "title": "Startup / side-project support",
+        "desc": "From problem framing to the first measurable MVP, with a clear roadmap and channels.",
+        "bullets": [
+          "MVP architecture & make/buy decisions",
+          "Roadmap and measurable milestones",
+          "Initial go-to-market & feedback loop",
+          "Minimum sustainable docs"
+        ],
+        "tags": ["MVP", "Roadmap", "Growth", "Research"]
+      },
+      {
+        "id": "fastlab",
+        "icon": "🎓",
+        "kicker": "B2C Training",
+        "title": "Idea Sprint Lab (students & career switch)",
+        "desc": "1:1 or micro-classes, online/on-site, to learn programming basics and AI tools and turn an idea into a testable prototype in days.",
+        "bullets": [
+          "Modern basics: HTML/CSS/JS, Git, API fundamentals",
+          "AI & tools: prompting, light RAG, n8n automations, no/low-code",
+          "Method: problem framing, MVP, metrics and testing",
+          "Deliverable: micro-prototype, checklist and next steps"
+        ],
+        "tags": [
+          "Coaching",
+          "AI Tools",
+          "No/Low-code",
+          "MVP",
+          "n8n",
+          "Supabase"
+        ],
+        "cta": "Book a 1:1"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "How does the quota booking work?",
+        "answer": "Pick a percentage of my yearly availability. You immediately see estimated hours and investment. We then align on goals, priorities and timeline."
+      },
+      {
+        "question": "Do you support early-stage ideas?",
+        "answer": "Yes. With the MVP Sprint we define scope, build a lean prototype and validate on the field with minimal costs."
+      },
+      {
+        "question": "Can I learn the basics to build on my own?",
+        "answer": "Absolutely: the track includes modern programming basics (JavaScript/Next.js) and AI tools to go from idea to test quickly."
+      },
+      {
+        "question": "Do you work on-site?",
+        "answer": "Yes, on request and for specific windows (workshops, discovery, sprints). Remote support is available continuously."
+      }
     ]
   }
 }

@@ -7,16 +7,16 @@ import { useTranslations, useLocale } from "next-intl";
 import LeadModal from "@/components/LeadModal";
 import Toast from "@/components/Toast";
 import { track, pageview } from "@/lib/track";
+import ServicesPro from "@/components/ServicesPro";
+import Faq, { FaqItem } from "@/components/Faq";
+import StructuredData from "@/components/StructuredData";
+import HeroTeaser from "@/components/HeroTeaser";
 
-// Currency formatter will be defined inside the component to use locale
-
-// Helper per leggere numerici da env (client)
 const envNum = (v: string | undefined, fallback: number) => {
   const n = Number(v);
   return Number.isFinite(n) && n > 0 ? n : fallback;
 };
 
-// Valori fissi da ENV (non modificabili da UI)
 const ENV = {
   target: envNum(process.env.NEXT_PUBLIC_TARGET, 80000),
   weeks: envNum(process.env.NEXT_PUBLIC_WEEKS, 46),
@@ -27,7 +27,11 @@ const ENV = {
 export default function Page() {
   const t = useTranslations("homePage");
   const tCaseStudies = useTranslations("");
+  const tFaq = useTranslations("faq");
   const locale = useLocale();
+
+  const site = process.env.NEXT_PUBLIC_SITE_URL!;
+  const pageUrl = `${site}/${locale}`;
   const contactEmail =
     process.env.NEXT_PUBLIC_CONTACT_EMAIL || "andrecasero@gmail.com";
 
@@ -36,7 +40,10 @@ export default function Page() {
     currency: "EUR",
   });
 
-  // Slider percentuale (manteniamo interazione)
+  // FAQ items from i18n
+  const faqItems = (tFaq.raw("items") as FaqItem[]) || [];
+
+  // Slider percentuale
   const [share, setShare] = useState(20);
 
   const [toastOpen, setToastOpen] = useState(false);
@@ -65,10 +72,7 @@ export default function Page() {
   // Track page view on mount
   useEffect(() => {
     pageview();
-    track("page_view", {
-      locale: locale,
-      page: "homepage"
-    });
+    track("page_view", { locale, page: "homepage" });
   }, [locale]);
 
   function handleLeadResult(status: "ok" | "err") {
@@ -78,11 +82,10 @@ export default function Page() {
       track("lead_form_success", {
         share_percentage: share,
         estimated_hours: clientHours,
-        estimated_cost: clientCost
+        estimated_cost: clientCost,
       });
     } else {
       setToastKind("error");
-      // append email for clarity, keeping your existing copy
       setToastMsg(`${t("modal.errorMessage")} ${contactEmail}`);
       track("lead_form_error");
     }
@@ -94,7 +97,14 @@ export default function Page() {
       <div className='language-selector-wrapper'>
         <LanguageSelector />
       </div>
+
       <BioIntro onCtaClick={() => setOpen(true)} />
+
+      {/* Servizi */}
+      <section className='card' style={{ marginTop: 18 }}>
+        <ServicesPro initialId='fastlab' onCtaClick={() => setOpen(true)} />
+      </section>
+
       <header className='header'>
         <h1 className='h1 mt-5'>
           {t.rich("mainTitle", {
@@ -106,7 +116,7 @@ export default function Page() {
         <p className='sub'>{t("mainSubtitle")}</p>
       </header>
 
-      {/* HERO full viewport: torta + metriche */}
+      {/* HERO */}
       <section className='card hero' aria-label={t("heroLabel")}>
         <div className='pieWrap'>
           <Donut percentage={share} t={t} />
@@ -140,12 +150,11 @@ export default function Page() {
                 track("quota_change", {
                   new_percentage: newShare,
                   estimated_hours: Math.round((totalHours * newShare) / 100),
-                  estimated_cost: (ENV.target * newShare) / 100
+                  estimated_cost: (ENV.target * newShare) / 100,
                 });
               }}
               aria-describedby='rangeHelp'
-              // aggiorna il riempimento del track in WebKit
-              style={{ ["--fill" as string | number]: `${share}%` }}
+              style={{ ["--fill" as any]: `${share}%` }}
             />
           </div>
           <div id='rangeHelp' className='help'>
@@ -157,47 +166,29 @@ export default function Page() {
           <div className='metric'>
             <h4>{t("metrics.quotaSelected")}</h4>
             <strong>{share}%</strong>
-            {/* <div className='help'>Regola con lo slider qui sotto.</div> */}
           </div>
           <div className='metric'>
             <h4>{t("metrics.estimatedHours")}</h4>
             <strong>{clientHours} h</strong>
-            {/* <div className='help'>Su un totale di ~{totalHours} h/anno.</div> */}
           </div>
           <div className='metric'>
             <h4>{t("metrics.estimatedInvestment")}</h4>
             <strong>{cur.format(clientCost)}</strong>
-            {/* <div className='help'>
-              Quota di {share}% su {cur.format(ENV.target)}.
-            </div> */}
           </div>
         </div>
 
         <div className='metrics1' style={{ marginTop: 10 }}>
-          {/* <div className='metric'>
-            <h4>Tariffa effettiva stimata</h4>
-            <strong>
-              {impliedRate > 0 ? cur.format(impliedRate) + "/h" : "-"}
-            </strong>
-            <div className='help'>
-              Calcolata su {ENV.weeks} sett × {ENV.daysPerWeek} gg ×{" "}
-              {ENV.hoursPerDay} h.
-            </div>
-          </div> */}
-          {/* <div className='metric'>
-            <h4>Obiettivo annuo</h4>
-            <strong>{cur.format(ENV.target)}</strong>
-            <div className='help'>Parametri definiti da configurazione.</div>
-          </div> */}
           <div className='metric'>
             <h4>{t("metrics.contact")}</h4>
             <strong>
-              <a 
+              <a
                 href={`mailto:${contactEmail}`}
-                onClick={() => track("contact_click", { 
-                  method: "email", 
-                  location: "hero_metrics" 
-                })}
+                onClick={() =>
+                  track("contact_click", {
+                    method: "email",
+                    location: "hero_metrics",
+                  })
+                }
               >
                 {contactEmail}
               </a>
@@ -207,81 +198,25 @@ export default function Page() {
         </div>
 
         <div className='cta'>
-          <button className='btn' onClick={() => {
-            track("cta_click", {
-              location: "hero",
-              share_percentage: share,
-              estimated_hours: clientHours,
-              estimated_cost: clientCost
-            });
-            setOpen(true);
-          }}>
+          <button
+            className='btn'
+            onClick={() => {
+              track("cta_click", {
+                location: "hero",
+                share_percentage: share,
+                estimated_hours: clientHours,
+                estimated_cost: clientCost,
+              });
+              setOpen(true);
+            }}
+          >
             {t("cta.button")}
           </button>
           <span className='help'>{t("cta.help")}</span>
         </div>
       </section>
 
-      {/* SERVIZI in evidenza */}
-      <section className='card' style={{ marginTop: 18 }}>
-        <div className='sectionHead'>
-          <div className='sectionKicker'>{t("services.kicker")}</div>
-          <h3 className='sectionTitle'>{t("services.title")}</h3>
-        </div>
-
-        <div className='servicesShowcase'>
-          <article className='svcCard'>
-            <div className='svcIcon'>🛠️</div>
-            <h4 className='svcTitle'>{t("services.development.title")}</h4>
-            <p className='svcDesc'>{t("services.development.description")}</p>
-            <div className='chipset'>
-              <span className='chip tag'>React Native / Expo</span>
-              <span className='chip tag'>Next js</span>
-              <span className='chip tag'>CI/CD</span>
-              <span className='chip tag'>TypeScript</span>
-              <span className='chip tag'>UI / UX</span>
-            </div>
-          </article>
-
-          <article className='svcCard'>
-            <div className='svcIcon'>🔧</div>
-            <h4 className='svcTitle'>{t("services.maintenance.title")}</h4>
-            <p className='svcDesc'>{t("services.maintenance.description")}</p>
-            <div className='chipset'>
-              <span className='chip tag'>SEO</span>
-              <span className='chip tag'>Content</span>
-              <span className='chip tag'>Analytics</span>
-            </div>
-          </article>
-
-          <article className='svcCard'>
-            <div className='svcIcon'>🧪</div>
-            <h4 className='svcTitle'>{t("services.consulting.title")}</h4>
-            <p className='svcDesc'>{t("services.consulting.description")}</p>
-            <div className='chipset'>
-              <span className='chip tag'>Data</span>
-              <span className='chip tag'>Automation</span>
-              <span className='chip tag'>RAG</span>
-            </div>
-          </article>
-
-          <article className='svcCard'>
-            <div className='svcIcon'>🚀</div>
-            <h4 className='svcTitle'>{t("services.startup.title")}</h4>
-            <p className='svcDesc'>{t("services.startup.description")}</p>
-            <div className='chipset'>
-              <span className='chip tag'>MVP</span>
-              <span className='chip tag'>Roadmap</span>
-              <span className='chip tag'>Growth</span>
-              <span className='chip tag'>Study trip</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      {/* --- Case study --- */}
-      {/* <CaseStudies items={CASE_STUDIES} onCtaClick={() => setOpen(true)} /> */}
-
+      {/* Case studies */}
       <section className='card' style={{ marginTop: 18 }}>
         <div className='sectionHead'>
           <div className='sectionKicker'>
@@ -312,19 +247,23 @@ export default function Page() {
         </div>
 
         <div className='cta'>
-          <button className='btn' onClick={() => {
-            track("cta_click", {
-              location: "case_studies",
-              share_percentage: share
-            });
-            setOpen(true);
-          }}>
+          <button
+            className='btn'
+            onClick={() => {
+              track("cta_click", {
+                location: "case_studies",
+                share_percentage: share,
+              });
+              setOpen(true);
+            }}
+          >
             {tCaseStudies("caseStudies.cta")}
           </button>
           <span className='help'>{tCaseStudies("caseStudies.ctaHelp")}</span>
         </div>
       </section>
 
+      {/* Clients & stack */}
       <section className='card' style={{ marginTop: 18 }}>
         <div className='sectionHead'>
           <div className='sectionKicker'>{t("clientsStack.kicker")}</div>
@@ -355,12 +294,14 @@ export default function Page() {
           <div className='metric'>
             <h4>{t("clientsStack.contactTitle")}</h4>
             <strong>
-              <a 
+              <a
                 href={`mailto:${contactEmail}`}
-                onClick={() => track("contact_click", { 
-                  method: "email", 
-                  location: "clients_stack" 
-                })}
+                onClick={() =>
+                  track("contact_click", {
+                    method: "email",
+                    location: "clients_stack",
+                  })
+                }
               >
                 {contactEmail}
               </a>
@@ -370,10 +311,24 @@ export default function Page() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className='card' style={{ marginTop: 18 }}>
+        <Faq items={faqItems} />
+      </section>
+
+      {/* Note */}
       <section className='card' style={{ marginTop: 18 }}>
         <h3 style={{ marginTop: 6, marginBottom: 6 }}>{t("notes.title")}</h3>
         <p className='help'>
           {t.rich("notes.description", {
+            weeks: ENV.weeks,
+            daysPerWeek: ENV.daysPerWeek,
+            hoursPerDay: ENV.hoursPerDay,
+            em: (chunks) => <em>{chunks}</em>,
+          })}
+        </p>
+        <p className='help'>
+          {t.rich("notes.iva_info", {
             weeks: ENV.weeks,
             daysPerWeek: ENV.daysPerWeek,
             hoursPerDay: ENV.hoursPerDay,
@@ -397,12 +352,60 @@ export default function Page() {
         env={ENV}
       />
 
+      {/* <HeroTeaser
+        onCtaClick={() => {
+          track("cta_click", {
+            location: "hero_teaser",
+            share_percentage: share,
+            estimated_hours: clientHours,
+            estimated_cost: clientCost,
+          });
+          setOpen(true);
+        }}
+      /> */}
+
       <Toast
         open={toastOpen}
         kind={toastKind}
         message={toastMsg}
         onClose={() => setToastOpen(false)}
         duration={10000}
+      />
+
+      {/* Structured Data (unico graph) */}
+      <StructuredData
+        pageUrl={pageUrl}
+        pageTitle='Andrea Casero — Food Tech & Innovation'
+        pageDescription='Consulente e sviluppatore freelance (Next.js, React Native). Calcola la tua quota 2026 e scopri case study e stack di lavoro.'
+        locale={locale} // "it" | "en"
+        breadcrumbs={[{ name: "Home", item: `${site}/${locale}` }]}
+        faqs={faqItems}
+        service={{
+          name: "MVP Sprint (online/on-site)",
+          description:
+            "Percorso intensivo per validare idee con programmazione base e AI tool.",
+          url: `${site}/${locale}#mvp-sprint`,
+          serviceType: "Product Discovery & Prototyping",
+          areaServed: ["Remote", "Italy", "EU"],
+          priceRange: "€€",
+          keywords: [
+            "MVP",
+            "prototipazione veloce",
+            "AI",
+            "programmazione base",
+          ],
+        }}
+        course={{
+          name: "MVP Sprint — Learn & Build",
+          description:
+            "Impara le basi + tool AI per portare un’idea a prototipo testabile in pochi giorni.",
+          url: `${site}/${locale}#mvp-sprint`,
+          teaches: ["JavaScript", "Next.js", "Git", "AI tools"],
+          audience: ["Students", "Career changers"],
+          keywords: ["career switch", "learn to build", "rapid validation"],
+        }}
+        sameAs={[]}
+        contactEmail='andrecasero@gmail.com'
       />
     </main>
   );
@@ -416,7 +419,7 @@ function Donut({
   percentage: number;
   t: ReturnType<typeof useTranslations>;
 }) {
-  const size = 360; // spazio di disegno (viewBox)
+  const size = 360;
   const stroke = 28;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
@@ -428,7 +431,6 @@ function Donut({
       role='img'
       aria-label={t("donut.ariaLabel", { percentage })}
     >
-      {/* width/height 100% per far scalare l'SVG nel contenitore */}
       <svg
         width='100%'
         height='100%'
@@ -458,8 +460,6 @@ function Donut({
           />
         </g>
       </svg>
-
-      {/* valore centrale */}
       <div style={{ position: "absolute", textAlign: "center" }}>
         <div
           style={{
