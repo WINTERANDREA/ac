@@ -149,6 +149,32 @@
     "title": "Andrea Casero — Food Tech & Innovation",
     "description": "Freelance consultant and developer (Next.js, React Native). Calculate your 2026 quota and discover case studies and work stack."
   },
+  "highlightedProjects": {
+    "kicker": "Featured Innovation",
+    "title": "Highlighted Project",
+    "subtitle": "Showcasing cutting-edge blockchain development",
+    "cta": "Explore Project",
+    "ctaHelp": "View live demo and source code",
+    "keyFeatures": "Key Features",
+    "technologyStack": "Technology Stack",
+    "viewDetails": "View Details",
+    "viewCode": "View Code",
+    "project": {
+      "title": "NFT Luxury Wine Marketplace",
+      "description": "A blockchain-powered marketplace for trading physically-redeemable luxury wine NFTs, bridging digital ownership with real-world assets.",
+      "highlights": [
+        "Ethereum-based smart contracts with OpenZeppelin ERC721",
+        "Physical wine bottle redemption system",
+        "Winery-controlled NFT minting process",
+        "IPFS integration for decentralized storage"
+      ],
+      "techStack": ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+      "demoUrl": "https://nft-luxury-wine.netlify.app/",
+      "sourceUrl": "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
+      "status": "Live Demo",
+      "category": "Blockchain & DeFi"
+    }
+  },
   "caseStudiesData": [
     {
       "title": "Cortilia — Mobile app refactor",
@@ -463,5 +489,47 @@
         "answer": "Yes, on request and for specific windows (workshops, discovery, sprints). Remote support is available continuously."
       }
     ]
+  },
+  "projectPage": {
+    "backToHome": "Back to Home",
+    "aboutProject": "About This Project",
+    "keyFeatures": "Key Features",
+    "challengesSolutions": "Challenges & Solutions",
+    "challenges": "Challenges",
+    "results": "Results",
+    "technologyStack": "Technology Stack",
+    "viewLiveDemo": "🚀 View Live Demo",
+    "viewSourceCode": "📋 View Source Code",
+    "exploreHelp": "Explore the live application or dive into the technical implementation.",
+    "projectNotFound": "Project Not Found",
+    "projectNotFoundMessage": "The project \"{slug}\" could not be found.",
+    "backToHomeButton": "← Back to Home"
+  },
+  "projects": {
+    "nft-luxury-wine": {
+      "name": "NFT Luxury Wine Marketplace",
+      "description": "A blockchain-powered marketplace for trading physically-redeemable luxury wine NFTs, bridging digital ownership with real-world assets.",
+      "longDescription": "This innovative marketplace combines the exclusivity of luxury wines with blockchain technology, creating a unique digital ecosystem where wine enthusiasts can own, trade, and eventually redeem physical bottles through NFTs. Built on Ethereum with robust smart contracts, it represents the future of collectible asset trading.",
+      "status": "Live Demo",
+      "category": "Blockchain & DeFi",
+      "highlights": [
+        "Ethereum-based smart contracts with OpenZeppelin ERC721",
+        "Physical wine bottle redemption system",
+        "Winery-controlled NFT minting process",
+        "IPFS integration for decentralized storage"
+      ],
+      "challenges": [
+        "Bridging digital ownership with physical asset redemption",
+        "Implementing secure smart contract architecture",
+        "Creating intuitive UX for blockchain interactions",
+        "Ensuring scalability and gas optimization"
+      ],
+      "results": [
+        "Deployed on Ethereum testnet with full functionality",
+        "Integrated IPFS for decentralized metadata storage",
+        "Implemented secure redemption mechanism",
+        "Built responsive React frontend"
+      ]
+    }
   }
 }

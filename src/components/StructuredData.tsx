@@ -31,6 +31,18 @@ type ServiceData = {
   keywords?: string[];
 };
 
+type ProjectData = {
+  name: string;
+  description: string;
+  demoUrl?: string;
+  sourceUrl: string;
+  techStack: string[];
+  category: string;
+  status: string;
+  highlights: string[];
+  image?: string;
+};
+
 type Props = {
   pageUrl: string;
   pageTitle: string;
@@ -40,6 +52,7 @@ type Props = {
   faqs?: FaqItem[];
   course?: CourseData;
   service?: ServiceData;
+  project?: ProjectData;
   sameAs?: string[];
   contactEmail?: string;
   telephone?: string;
@@ -61,6 +74,7 @@ export default function StructuredData({
   faqs,
   course,
   service,
+  project,
   sameAs = [],
   contactEmail = "andrecasero@gmail.com",
   telephone,
@@ -175,6 +189,25 @@ export default function StructuredData({
         : {}),
       ...(course.teaches ? { teaches: course.teaches } : {}),
       ...(course.keywords ? { keywords: course.keywords.join(", ") } : {}),
+    });
+  }
+
+  // Project/SoftwareApplication
+  if (project) {
+    graph.push({
+      "@type": "SoftwareApplication",
+      name: project.name,
+      description: project.description,
+      ...(project.demoUrl ? { url: project.demoUrl } : {}),
+      ...(project.image ? { image: project.image } : {}),
+      codeRepository: project.sourceUrl,
+      programmingLanguage: project.techStack,
+      applicationCategory: project.category,
+      applicationSubCategory: project.status,
+      featureList: project.highlights,
+      author: { "@id": personId },
+      creator: { "@id": personId },
+      keywords: project.techStack.join(", "),
     });
   }
 

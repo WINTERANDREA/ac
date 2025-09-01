@@ -10,7 +10,7 @@ import { track, pageview } from "@/lib/track";
 import ServicesPro from "@/components/ServicesPro";
 import Faq, { FaqItem } from "@/components/Faq";
 import StructuredData from "@/components/StructuredData";
-import HeroTeaser from "@/components/HeroTeaser";
+import HighlightedProjects from "@/components/HighlightedProjects";
 
 const envNum = (v: string | undefined, fallback: number) => {
   const n = Number(v);
@@ -105,6 +105,9 @@ export default function Page() {
         <ServicesPro initialId='fastlab' onCtaClick={() => setOpen(true)} />
       </section>
 
+      {/* Highlighted Projects */}
+      <HighlightedProjects />
+
       <header className='header'>
         <h1 className='h1 mt-5'>
           {t.rich("mainTitle", {
@@ -154,7 +157,7 @@ export default function Page() {
                 });
               }}
               aria-describedby='rangeHelp'
-              style={{ ["--fill" as any]: `${share}%` }}
+              style={{ "--fill": `${share}%` } as React.CSSProperties}
             />
           </div>
           <div id='rangeHelp' className='help'>
@@ -226,7 +229,7 @@ export default function Page() {
         </div>
 
         <div className='gridCards'>
-          {tCaseStudies.raw("caseStudiesData").map((cs: any) => (
+          {tCaseStudies.raw("caseStudiesData").map((cs: {title: string; subtitle: string; bullets: string[]; tags: string[]}) => (
             <article key={cs.title} className='csCard'>
               <h4>{cs.title}</h4>
               <div className='subtle'>{cs.subtitle}</div>
@@ -380,6 +383,22 @@ export default function Page() {
         locale={locale} // "it" | "en"
         breadcrumbs={[{ name: "Home", item: `${site}/${locale}` }]}
         faqs={faqItems}
+        project={{
+          name: "NFT Luxury Wine Marketplace",
+          description: "A blockchain-powered marketplace for trading physically-redeemable luxury wine NFTs, bridging digital ownership with real-world assets.",
+          demoUrl: "https://nft-luxury-wine.netlify.app/",
+          sourceUrl: "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
+          image: `${site}/project/nft-luxury-wine.png`,
+          techStack: ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+          category: "Blockchain & DeFi",
+          status: "Live Demo",
+          highlights: [
+            "Ethereum-based smart contracts with OpenZeppelin ERC721",
+            "Physical wine bottle redemption system",
+            "Winery-controlled NFT minting process",
+            "IPFS integration for decentralized storage"
+          ]
+        }}
         service={{
           name: "MVP Sprint (online/on-site)",
           description:
@@ -398,7 +417,7 @@ export default function Page() {
         course={{
           name: "MVP Sprint — Learn & Build",
           description:
-            "Impara le basi + tool AI per portare un’idea a prototipo testabile in pochi giorni.",
+            "Impara le basi + tool AI per portare un'idea a prototipo testabile in pochi giorni.",
           url: `${site}/${locale}#mvp-sprint`,
           teaches: ["JavaScript", "Next.js", "Git", "AI tools"],
           audience: ["Students", "Career changers"],

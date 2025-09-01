@@ -143,6 +143,32 @@
     "title": "Andrea Casero — Food Tech & Innovation",
     "description": "Consulente e sviluppatore freelance (Next.js, React Native). Calcola la tua quota 2026 e scopri case study e stack di lavoro."
   },
+  "highlightedProjects": {
+    "kicker": "Innovazione in Evidenza",
+    "title": "Progetto in Evidenza",
+    "subtitle": "Sviluppo blockchain all'avanguardia",
+    "cta": "Esplora Progetto",
+    "ctaHelp": "Visualizza demo live e codice sorgente",
+    "keyFeatures": "Caratteristiche Principali",
+    "technologyStack": "Stack Tecnologico",
+    "viewDetails": "Visualizza Dettagli",
+    "viewCode": "Visualizza Codice",
+    "project": {
+      "title": "NFT Luxury Wine Marketplace",
+      "description": "Un marketplace basato su blockchain per il commercio di NFT di vini di lusso fisicamente riscattabili, che collega la proprietà digitale con gli asset del mondo reale.",
+      "highlights": [
+        "Smart contract basati su Ethereum con OpenZeppelin ERC721",
+        "Sistema di riscatto di bottiglie di vino fisiche",
+        "Processo di coniazione NFT controllato dalle cantine",
+        "Integrazione IPFS per archiviazione decentralizzata"
+      ],
+      "techStack": ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+      "demoUrl": "https://nft-luxury-wine.netlify.app/",
+      "sourceUrl": "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
+      "status": "Demo Live",
+      "category": "Blockchain & DeFi"
+    }
+  },
   "caseStudiesData": [
     {
       "title": "Cortilia — App mobile refactor",
@@ -457,5 +483,47 @@
         "answer": "Sì, su richiesta e per finestre temporali definite (workshop, discovery, sprint). In remoto disponibilità continua."
       }
     ]
+  },
+  "projectPage": {
+    "backToHome": "Torna alla Home",
+    "aboutProject": "Informazioni sul Progetto",
+    "keyFeatures": "Caratteristiche Principali",
+    "challengesSolutions": "Sfide e Soluzioni",
+    "challenges": "Sfide",
+    "results": "Risultati",
+    "technologyStack": "Stack Tecnologico",
+    "viewLiveDemo": "🚀 Visualizza Demo Live",
+    "viewSourceCode": "📋 Visualizza Codice Sorgente",
+    "exploreHelp": "Esplora l'applicazione live o approfondisci l'implementazione tecnica.",
+    "projectNotFound": "Progetto Non Trovato",
+    "projectNotFoundMessage": "Il progetto \"{slug}\" non è stato trovato.",
+    "backToHomeButton": "← Torna alla Home"
+  },
+  "projects": {
+    "nft-luxury-wine": {
+      "name": "NFT Luxury Wine Marketplace",
+      "description": "Un marketplace basato su blockchain per il commercio di NFT di vini di lusso fisicamente riscattabili, che collega la proprietà digitale con gli asset del mondo reale.",
+      "longDescription": "Questo marketplace innovativo combina l'esclusività dei vini di lusso con la tecnologia blockchain, creando un ecosistema digitale unico dove gli appassionati di vino possono possedere, scambiare e infine riscattare bottiglie fisiche attraverso NFT. Costruito su Ethereum con robusti smart contract, rappresenta il futuro del commercio di asset collezionabili.",
+      "status": "Demo Live",
+      "category": "Blockchain & DeFi",
+      "highlights": [
+        "Smart contract basati su Ethereum con OpenZeppelin ERC721",
+        "Sistema di riscatto di bottiglie di vino fisiche",
+        "Processo di coniazione NFT controllato dalle cantine",
+        "Integrazione IPFS per archiviazione decentralizzata"
+      ],
+      "challenges": [
+        "Collegare la proprietà digitale con il riscatto di asset fisici",
+        "Implementare un'architettura di smart contract sicura",
+        "Creare un'UX intuitiva per le interazioni blockchain",
+        "Garantire scalabilità e ottimizzazione del gas"
+      ],
+      "results": [
+        "Distribuito su Ethereum testnet con funzionalità complete",
+        "Integrato IPFS per archiviazione decentralizzata dei metadati",
+        "Implementato meccanismo di riscatto sicuro",
+        "Costruito frontend React responsive"
+      ]
+    }
   }
 }
