@@ -9,7 +9,7 @@
     "bio2": "After a period between <strong>cheese production</strong> and <strong>food safety consulting</strong>, I realized I was looking for a different way to create value. In 2017 I left my comfort zone and went to <strong>Scotland</strong> to improve my English and change perspective. There I met people who had trained themselves: a light bulb went on.",
     "bio3": "I chose <strong>Bangalore</strong> (India) for three intensive months: spartan life, many questions, and the first serious steps in <strong>web and mobile development</strong>. Since then, between online courses, real projects and nights of trying, failing and redoing, I have continued to grow steadily.",
     "bio4": "Today I work as a <strong>freelancer</strong>. My goal is to help people, companies and teams <strong>transform ideas into products</strong>, with care for performance, accessibility and results. Over time I have enriched my profile with experiences in <strong>AI</strong> and a solid foundation in <strong>blockchain</strong> (ConsenSys Academy, 2021), in addition to certifications and recognitions in my first world, that of food.",
-    "bio5": "That's why I created a simple format: my time is <em>bookable by quota</em>. Choose the percentage of my annual availability and immediately see <strong>hours</strong> and <strong>investment</strong>. It's transparent, plannable and allows you to focus on the product.",
+    "bio5": "For the year ahead, I've decided to make my time accessible to everyone: whether you're <strong>curious to get your hands dirty with technology</strong>, have <strong>an idea to transform into digital reality</strong>, or represent <strong>a company looking for the right technical partner</strong>. I've created a simple system: my time is <em>bookable by quota</em>. Choose the percentage you need, see <strong>hours</strong> and <strong>investment</strong> instantly, and let's get started.",
     "altText": "Photo of Andrea Casero",
     "tags": {
       "unisg": "UNISG Alumni",
@@ -168,7 +168,15 @@
         "Winery-controlled NFT minting process",
         "IPFS integration for decentralized storage"
       ],
-      "techStack": ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+      "techStack": [
+        "Ethereum",
+        "Solidity",
+        "OpenZeppelin",
+        "Truffle",
+        "Ganache",
+        "IPFS",
+        "JavaScript"
+      ],
       "demoUrl": "https://nft-luxury-wine.netlify.app/",
       "sourceUrl": "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
       "status": "Live Demo",
@@ -489,6 +497,13 @@
         "answer": "Yes, on request and for specific windows (workshops, discovery, sprints). Remote support is available continuously."
       }
     ]
+  },
+  "footer": {
+    "tagline": "Food Tech & Innovation — Transforming ideas into digital products",
+    "contact": "Contact",
+    "location": "Milan, Italy",
+    "connect": "Connect",
+    "rights": "All rights reserved."
   },
   "projectPage": {
     "backToHome": "Back to Home",

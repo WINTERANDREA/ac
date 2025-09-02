@@ -9,7 +9,7 @@
     "bio2": "Dopo un periodo tra <strong>produzione casearia</strong> e <strong>consulenza in sicurezza alimentare</strong>, ho capito che cercavo un modo diverso per creare valore. Nel 2017 ho lasciato la comfort zone e sono partito per la <strong>Scozia</strong> per migliorare l'inglese e cambiare prospettiva. Lì ho incontrato persone che si erano formate da autodidatte: mi si è accesa una lampadina.",
     "bio3": "Ho scelto <strong>Bangalore</strong> (India) per tre mesi intensivi: vita spartana, tante domande, e i primi passi seri nello <strong>sviluppo web e mobile</strong>. Da allora, tra corsi online, progetti reali e notti a provare, sbagliare e rifare, ho continuato a crescere con costanza.",
     "bio4": "Oggi lavoro come <strong>libero professionista</strong>. Il mio obiettivo è aiutare persone, aziende e team a <strong>trasformare le idee in prodotti</strong>, con cura per performance, accessibilità e risultati. Nel tempo ho arricchito il mio profilo con esperienze in <strong>AI</strong> e una solida base in <strong>blockchain</strong> (ConsenSys Academy, 2021), oltre a certificazioni e riconoscimenti nel mio primo mondo, quello del food.",
-    "bio5": "Per questo ho creato un formato semplice: il mio tempo è <em>prenotabile a quota</em>. Scegli la percentuale della mia disponibilità annuale e vedi subito <strong>ore</strong> e <strong>investimento</strong>. È trasparente, pianificabile e ti permette di concentrarti sul prodotto.",
+    "bio5": "Per l'anno a venire ho deciso di rendere il mio tempo accessibile a tutti: che tu sia <strong>curioso di sporcarti le mani con la tecnologia</strong>, abbia <strong>un'idea da trasformare in realtà digitale</strong>, o rappresenti <strong>un'azienda in cerca del partner tecnico giusto</strong>. Ho creato un sistema semplice: il mio tempo è <em>prenotabile a quota</em>. Scegli la percentuale che ti serve, vedi subito <strong>ore</strong> e <strong>investimento</strong>, e partiamo.",
     "altText": "Foto di Andrea Casero",
     "tags": {
       "unisg": "UNISG Alumni",
@@ -162,7 +162,15 @@
         "Processo di coniazione NFT controllato dalle cantine",
         "Integrazione IPFS per archiviazione decentralizzata"
       ],
-      "techStack": ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+      "techStack": [
+        "Ethereum",
+        "Solidity",
+        "OpenZeppelin",
+        "Truffle",
+        "Ganache",
+        "IPFS",
+        "JavaScript"
+      ],
       "demoUrl": "https://nft-luxury-wine.netlify.app/",
       "sourceUrl": "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
       "status": "Demo Live",
@@ -498,6 +506,13 @@
     "projectNotFound": "Progetto Non Trovato",
     "projectNotFoundMessage": "Il progetto \"{slug}\" non è stato trovato.",
     "backToHomeButton": "← Torna alla Home"
+  },
+  "footer": {
+    "tagline": "Food Tech & Innovation — Trasformo idee in prodotti digitali",
+    "contact": "Contatto",
+    "location": "Milano, Italia",
+    "connect": "Seguimi",
+    "rights": "Tutti i diritti riservati."
   },
   "projects": {
     "nft-luxury-wine": {

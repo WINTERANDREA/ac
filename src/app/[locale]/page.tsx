@@ -11,6 +11,7 @@ import ServicesPro from "@/components/ServicesPro";
 import Faq, { FaqItem } from "@/components/Faq";
 import StructuredData from "@/components/StructuredData";
 import HighlightedProjects from "@/components/HighlightedProjects";
+import Footer from "@/components/Footer";
 
 const envNum = (v: string | undefined, fallback: number) => {
   const n = Number(v);
@@ -426,6 +427,8 @@ export default function Page() {
         sameAs={[]}
         contactEmail='andrecasero@gmail.com'
       />
+
+      <Footer />
     </main>
   );
 }
