@@ -448,6 +448,28 @@
         "tags": ["MVP", "Roadmap", "Growth", "Research"]
       },
       {
+        "id": "web3",
+        "icon": "⛓️",
+        "kicker": "Blockchain & Web3",
+        "title": "Sviluppo Web & Mobile per Web3",
+        "desc": "Applicazioni Web3 full-stack con framework moderni, integrazioni blockchain e protocolli decentralizzati per piattaforme web e mobile.",
+        "bullets": [
+          "App Next.js & React Native con integrazioni Web3",
+          "Connessioni wallet (MetaMask, WalletConnect, Rainbow Kit)",
+          "Interazioni smart contract con ethers.js, viem, wagmi",
+          "Supporto multi-chain e integrazioni protocolli DeFi"
+        ],
+        "tags": [
+          "Next.js",
+          "React Native",
+          "ethers.js",
+          "viem",
+          "wagmi",
+          "RainbowKit"
+        ],
+        "cta": "Parliamo del progetto Web3"
+      },
+      {
         "id": "fastlab",
         "icon": "🎓",
         "kicker": "Formazione B2C",
