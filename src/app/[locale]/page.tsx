@@ -1,7 +1,7 @@
 "use client";
 
 import BioIntro from "@/components/BioIntro";
-import LanguageSelector from "@/components/LanguageSelector";
+import PageLayout from "@/components/PageLayout";
 import { useMemo, useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import LeadModal from "@/components/LeadModal";
@@ -11,7 +11,6 @@ import ServicesPro from "@/components/ServicesPro";
 import Faq, { FaqItem } from "@/components/Faq";
 import StructuredData from "@/components/StructuredData";
 import HighlightedProjects from "@/components/HighlightedProjects";
-import Footer from "@/components/Footer";
 
 const envNum = (v: string | undefined, fallback: number) => {
   const n = Number(v);
@@ -94,17 +93,35 @@ export default function Page() {
   }
 
   return (
-    <main className='container'>
-      <div className='language-selector-wrapper'>
-        <LanguageSelector />
-      </div>
-
+    <PageLayout locale={locale} showHomeLink={false}>
       <BioIntro onCtaClick={() => setOpen(true)} />
 
       {/* Servizi */}
       <section className='card' style={{ marginTop: 18 }}>
         <ServicesPro initialId='fastlab' onCtaClick={() => setOpen(true)} />
       </section>
+
+      {/* Computational Gastronomy */}
+      {/* <section className='card' style={{ marginTop: 18 }}>
+        <div className='sectionHead'>
+          <div className='sectionKicker'>{t("computationalGastronomy.kicker")}</div>
+          <h3 className='sectionTitle'>{t("computationalGastronomy.title")}</h3>
+        </div>
+        <p className='sub' style={{ marginBottom: 18 }}>{t("computationalGastronomy.description")}</p>
+        <div className='cta'>
+          <a
+            href={`/${locale}/computational-gastronomy`}
+            className='btn'
+            onClick={() => {
+              track("cta_click", {
+                location: "computational_gastronomy_section",
+              });
+            }}
+          >
+            {t("computationalGastronomy.cta")}
+          </a>
+        </div>
+      </section> */}
 
       {/* Highlighted Projects */}
       <HighlightedProjects />
@@ -230,24 +247,33 @@ export default function Page() {
         </div>
 
         <div className='gridCards'>
-          {tCaseStudies.raw("caseStudiesData").map((cs: {title: string; subtitle: string; bullets: string[]; tags: string[]}) => (
-            <article key={cs.title} className='csCard'>
-              <h4>{cs.title}</h4>
-              <div className='subtle'>{cs.subtitle}</div>
-              <ul>
-                {cs.bullets.map((b: string) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-              <div className='chipset'>
-                {cs.tags.map((tag: string) => (
-                  <span key={tag} className='chip tag'>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {tCaseStudies
+            .raw("caseStudiesData")
+            .map(
+              (cs: {
+                title: string;
+                subtitle: string;
+                bullets: string[];
+                tags: string[];
+              }) => (
+                <article key={cs.title} className='csCard'>
+                  <h4>{cs.title}</h4>
+                  <div className='subtle'>{cs.subtitle}</div>
+                  <ul>
+                    {cs.bullets.map((b: string) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  <div className='chipset'>
+                    {cs.tags.map((tag: string) => (
+                      <span key={tag} className='chip tag'>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              )
+            )}
         </div>
 
         <div className='cta'>
@@ -386,19 +412,29 @@ export default function Page() {
         faqs={faqItems}
         project={{
           name: "NFT Luxury Wine Marketplace",
-          description: "A blockchain-powered marketplace for trading physically-redeemable luxury wine NFTs, bridging digital ownership with real-world assets.",
+          description:
+            "A blockchain-powered marketplace for trading physically-redeemable luxury wine NFTs, bridging digital ownership with real-world assets.",
           demoUrl: "https://nft-luxury-wine.netlify.app/",
-          sourceUrl: "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
+          sourceUrl:
+            "https://github.com/WINTERANDREA/blockchain-developer-bootcamp-final-project",
           image: `${site}/project/nft-luxury-wine.png`,
-          techStack: ["Ethereum", "Solidity", "OpenZeppelin", "Truffle", "Ganache", "IPFS", "JavaScript"],
+          techStack: [
+            "Ethereum",
+            "Solidity",
+            "OpenZeppelin",
+            "Truffle",
+            "Ganache",
+            "IPFS",
+            "JavaScript",
+          ],
           category: "Blockchain & DeFi",
           status: "Live Demo",
           highlights: [
             "Ethereum-based smart contracts with OpenZeppelin ERC721",
             "Physical wine bottle redemption system",
             "Winery-controlled NFT minting process",
-            "IPFS integration for decentralized storage"
-          ]
+            "IPFS integration for decentralized storage",
+          ],
         }}
         service={{
           name: "MVP Sprint (online/on-site)",
@@ -427,9 +463,7 @@ export default function Page() {
         sameAs={[]}
         contactEmail='andrecasero@gmail.com'
       />
-
-      <Footer />
-    </main>
+    </PageLayout>
   );
 }
 

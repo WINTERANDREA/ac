@@ -137,6 +137,12 @@
       ],
       "cta": "Book a discovery call",
       "help": "No commitment: we align on goals and timing."
+    },
+    "computationalGastronomy": {
+      "kicker": "New Pillar",
+      "title": "Computational Gastronomy Studio",
+      "description": "Transform recipes into actionable insights through computational analysis of ingredients, nutrition, and sustainability.",
+      "cta": "Explore the Studio"
     }
   },
   "languageSelector": {
@@ -528,7 +534,6 @@
     "rights": "All rights reserved."
   },
   "projectPage": {
-    "backToHome": "Back to Home",
     "aboutProject": "About This Project",
     "keyFeatures": "Key Features",
     "challengesSolutions": "Challenges & Solutions",
@@ -540,7 +545,48 @@
     "exploreHelp": "Explore the live application or dive into the technical implementation.",
     "projectNotFound": "Project Not Found",
     "projectNotFoundMessage": "The project \"{slug}\" could not be found.",
-    "backToHomeButton": "← Back to Home"
+    "backToHomeButton": "← Back to Home",
+    "backToHome": "← Back to Home"
+  },
+  "common": {
+    "backToHome": "← Back to Home"
+  },
+  "computational-gastronomy": {
+    "meta": {
+      "title": "Computational Gastronomy Studio - Data-Driven Culinary Innovation",
+      "description": "Transform recipes into actionable insights through computational analysis of ingredients, nutrition, sustainability, and health impacts."
+    },
+    "hero": {
+      "kicker": "Computational Gastronomy",
+      "title": "Where Data Meets Flavor",
+      "description": "Transform recipes into actionable insights through systematic analysis of ingredients, molecular composition, nutritional profiles, and environmental impact."
+    },
+    "flow": {
+      "kicker": "Analysis Framework",
+      "title": "From Recipes to Intelligence",
+      "description": "Every dish tells a data story. We decode it through computational analysis.",
+      "steps": {
+        "recipes": "Recipes",
+        "ingredients": "Ingredients", 
+        "molecules": "Molecules",
+        "nutrition": "Nutrition",
+        "health": "Health",
+        "footprint": "Footprint"
+      }
+    },
+    "cta": {
+      "services": {
+        "title": "Professional Services",
+        "description": "Menu Intelligence Sprints, Brand Flavor Atlas, and custom workshops for restaurants and food brands.",
+        "action": "Explore Services →"
+      },
+      "tools": {
+        "kicker": "Interactive Tools",
+        "title": "Try Our Demos",
+        "pairing": "Cheese Pairing Graph",
+        "optimizer": "Menu CO₂ Optimizer"
+      }
+    }
   },
   "projects": {
     "nft-luxury-wine": {

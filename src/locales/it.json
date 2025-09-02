@@ -131,6 +131,12 @@
       ],
       "cta": "Prenota una discovery call",
       "help": "Nessun impegno: capiamo obiettivi e tempi."
+    },
+    "computationalGastronomy": {
+      "kicker": "Nuovo Pilastro",
+      "title": "Studio di Gastronomia Computazionale",
+      "description": "Trasforma le ricette in insights azionabili attraverso l'analisi computazionale di ingredienti, nutrizione e sostenibilità.",
+      "cta": "Esplora lo Studio"
     }
   },
   "languageSelector": {
@@ -515,7 +521,6 @@
     ]
   },
   "projectPage": {
-    "backToHome": "Torna alla Home",
     "aboutProject": "Informazioni sul Progetto",
     "keyFeatures": "Caratteristiche Principali",
     "challengesSolutions": "Sfide e Soluzioni",
@@ -527,7 +532,8 @@
     "exploreHelp": "Esplora l'applicazione live o approfondisci l'implementazione tecnica.",
     "projectNotFound": "Progetto Non Trovato",
     "projectNotFoundMessage": "Il progetto \"{slug}\" non è stato trovato.",
-    "backToHomeButton": "← Torna alla Home"
+    "backToHomeButton": "← Torna alla Home",
+    "backToHome": "← Torna alla Home"
   },
   "footer": {
     "tagline": "Food Tech & Innovation — Trasformo idee in prodotti digitali",
@@ -535,6 +541,46 @@
     "location": "Milano, Italia",
     "connect": "Seguimi",
     "rights": "Tutti i diritti riservati."
+  },
+  "common": {
+    "backToHome": "← Torna alla Home"
+  },
+  "computational-gastronomy": {
+    "meta": {
+      "title": "Studio di Gastronomia Computazionale - Innovazione Culinaria Data-Driven",
+      "description": "Trasforma le ricette in insights azionabili attraverso l'analisi computazionale di ingredienti, nutrizione, sostenibilità e impatti sulla salute."
+    },
+    "hero": {
+      "kicker": "Gastronomia Computazionale",
+      "title": "Dove i Dati Incontrano il Sapore",
+      "description": "Trasforma le ricette in insights azionabili attraverso l'analisi sistematica di ingredienti, composizione molecolare, profili nutrizionali e impatto ambientale."
+    },
+    "flow": {
+      "kicker": "Framework di Analisi",
+      "title": "Dalle Ricette all'Intelligence",
+      "description": "Ogni piatto racconta una storia di dati. Noi la decodifichiamo attraverso l'analisi computazionale.",
+      "steps": {
+        "recipes": "Ricette",
+        "ingredients": "Ingredienti",
+        "molecules": "Molecole",
+        "nutrition": "Nutrizione",
+        "health": "Salute",
+        "footprint": "Impronta"
+      }
+    },
+    "cta": {
+      "services": {
+        "title": "Servizi Professionali",
+        "description": "Sprint di Menu Intelligence, Brand Flavor Atlas e workshop personalizzati per ristoranti e brand alimentari.",
+        "action": "Esplora i Servizi →"
+      },
+      "tools": {
+        "kicker": "Strumenti Interattivi",
+        "title": "Prova le Nostre Demo",
+        "pairing": "Grafico Abbinamenti Formaggi",
+        "optimizer": "Ottimizzatore CO₂ Menu"
+      }
+    }
   },
   "projects": {
     "nft-luxury-wine": {

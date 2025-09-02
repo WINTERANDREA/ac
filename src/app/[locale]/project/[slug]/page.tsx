@@ -3,8 +3,8 @@
 import { useTranslations, useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
-import LanguageSelector from "@/components/LanguageSelector";
 import StructuredData from "@/components/StructuredData";
+import PageLayout from "@/components/PageLayout";
 import { track, pageview } from "@/lib/track";
 import { useEffect } from "react";
 
@@ -75,16 +75,13 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <main className="container">
-        <div className="language-selector-wrapper">
-          <LanguageSelector />
-        </div>
+      <PageLayout locale={locale} showHomeLink={true} homeLinkText={t("backToHome")}>
         <div className="error-page">
           <h1>{t("projectNotFound")}</h1>
           <p>{t("projectNotFoundMessage", { slug })}</p>
           <a href={`/${locale}`} className="btn">{t("backToHomeButton")}</a>
         </div>
-      </main>
+      </PageLayout>
     );
   }
 
@@ -104,17 +101,7 @@ export default function ProjectPage() {
   };
 
   return (
-    <main className="container">
-      <div className="language-selector-wrapper">
-        <LanguageSelector />
-      </div>
-
-      {/* Breadcrumb Navigation */}
-      <nav className="breadcrumb" style={{ marginBottom: 20 }}>
-        <a href={`/${locale}`} onClick={() => handleActionClick("home")}>
-          {t("backToHome")}
-        </a>
-      </nav>
+    <PageLayout locale={locale} showHomeLink={true} homeLinkText={t("backToHome")}>
 
       {/* Project Header */}
       <header className="project-header">
@@ -235,17 +222,6 @@ export default function ProjectPage() {
       />
 
       <style jsx>{`
-        .breadcrumb a {
-          color: var(--muted);
-          text-decoration: none;
-          font-size: 0.9em;
-          transition: color 0.2s ease;
-        }
-        
-        .breadcrumb a:hover {
-          color: var(--accent);
-        }
-
         .project-header {
           margin-bottom: 24px;
         }
@@ -467,6 +443,6 @@ export default function ProjectPage() {
           }
         }
       `}</style>
-    </main>
+    </PageLayout>
   );
 }
